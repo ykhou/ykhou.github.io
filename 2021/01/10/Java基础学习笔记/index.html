@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="如有问题或建议，请通过 houyongkang@bupt.edu.cn 联系">
+    <meta name="author" content="Kang">
+    
+    <title>
+        
+            Java基础学习笔记 |
+        
+        Kang`Blog
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"ykhou.gitee.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"所念皆星河,星河不可及."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.0"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Kang`s blog" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Kang`Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/links"
+                            >
+                                友链
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/links">友链</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Java基础学习笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Kang</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-01-10 17:15:41
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java/">Java</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>6.8k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>25 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="JAVA学习"><a href="#JAVA学习" class="headerlink" title="JAVA学习"></a>JAVA学习</h1><h2 id="一、基础语法"><a href="#一、基础语法" class="headerlink" title="一、基础语法"></a>一、基础语法</h2><h3 id="1、注释"><a href="#1、注释" class="headerlink" title="1、注释"></a>1、注释</h3><ul>
+<li>单行注释<ul>
+<li>// 注释信息</li>
+</ul>
+</li>
+<li>多行注释<ul>
+<li>/<em>注释信息</em>/</li>
+</ul>
+</li>
+<li>文档注释<ul>
+<li>/<strong>注释信息</strong>/</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、关键字"><a href="#2、关键字" class="headerlink" title="2、关键字"></a>2、关键字</h3><ul>
+<li>关键字的字母全部小写</li>
+</ul>
+<h3 id="3、常量"><a href="#3、常量" class="headerlink" title="3、常量"></a>3、常量</h3><ul>
+<li>字符串常量<ul>
+<li>双引号括起来的内容，如 “helloworld”</li>
+</ul>
+</li>
+<li>整数常量<ul>
+<li>不带小数的数字，如 22,33</li>
+</ul>
+</li>
+<li>小数常量<ul>
+<li>带小数的数字，如 22.3</li>
+</ul>
+</li>
+<li>字符常量<ul>
+<li>用单引号括起来的内容，如 ‘A’,’我’</li>
+</ul>
+</li>
+<li>布尔常量<ul>
+<li>true，false</li>
+</ul>
+</li>
+<li>空常量<ul>
+<li>一个特殊的值，null</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、数据类型"><a href="#4、数据类型" class="headerlink" title="4、数据类型"></a>4、数据类型</h3><ul>
+<li>基本数据类型<ul>
+<li>数值型<ul>
+<li>整数（byte，short，int，long）</li>
+<li>浮点型（float，double）</li>
+<li>字符（char）</li>
+</ul>
+</li>
+<li>非数值型<ul>
+<li>布尔（boolean）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>引用数据类型</li>
+</ul>
+<h3 id="5、变量"><a href="#5、变量" class="headerlink" title="5、变量"></a>5、变量</h3><ul>
+<li>默认为int和double类型</li>
+<li>当要定义long类型的变量时，后面要加一个L，如 l = 100000000L</li>
+<li>当定义float类型的变量时，后面加一个F，如 f = 13.14F</li>
+</ul>
+<h3 id="6、标识符"><a href="#6、标识符" class="headerlink" title="6、标识符"></a>6、标识符</h3><ul>
+<li>规则<ul>
+<li>由数字、字母、下划线、美元符组成</li>
+<li>不能以数字开头</li>
+<li>不能是关键字</li>
+<li>区分大小写</li>
+</ul>
+</li>
+<li>命名法<ul>
+<li>小驼峰命名法<ul>
+<li>方法和变量</li>
+</ul>
+</li>
+<li>大驼峰命名法<ul>
+<li>类class</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="7、类型转换"><a href="#7、类型转换" class="headerlink" title="7、类型转换"></a>7、类型转换</h3><ul>
+<li>自动类型转换</li>
+<li>强制类型转换</li>
+</ul>
+<h2 id="二、运算符"><a href="#二、运算符" class="headerlink" title="二、运算符"></a>二、运算符</h2><h3 id="1、算术运算符"><a href="#1、算术运算符" class="headerlink" title="1、算术运算符"></a>1、算术运算符</h3><ul>
+<li>加、减、乘、除、取余</li>
+<li>算术表达式中包含多个基本数据类型时，整个算术表达式的类型会自动提升<ul>
+<li>byte、short、char类型会将被提升到int类型</li>
+<li>等级顺序 byte,short,char-&gt;int-&gt;long-&gt;float-&gt;double</li>
+</ul>
+</li>
+<li>字符串拼接</li>
+</ul>
+<h3 id="2、赋值运算符"><a href="#2、赋值运算符" class="headerlink" title="2、赋值运算符"></a>2、赋值运算符</h3><ul>
+<li>=</li>
+<li>+=</li>
+</ul>
+<h3 id="3、自增自减运算符"><a href="#3、自增自减运算符" class="headerlink" title="3、自增自减运算符"></a>3、自增自减运算符</h3><ul>
+<li>i++ i– 先用再加</li>
+<li>++i –i 先加再用</li>
+</ul>
+<h3 id="4、关系运算符"><a href="#4、关系运算符" class="headerlink" title="4、关系运算符"></a>4、关系运算符</h3><ul>
+<li>== !=</li>
+<li>&lt; &gt;</li>
+<li>&lt;= &gt;=</li>
+</ul>
+<h3 id="5、逻辑运算符"><a href="#5、逻辑运算符" class="headerlink" title="5、逻辑运算符"></a>5、逻辑运算符</h3><ul>
+<li>&amp; | ^ !</li>
+<li>&amp;&amp; ||</li>
+</ul>
+<h3 id="6、三元运算符"><a href="#6、三元运算符" class="headerlink" title="6、三元运算符"></a>6、三元运算符</h3><ul>
+<li>a&gt;b?a:b</li>
+</ul>
+<h2 id="三、数据输入"><a href="#三、数据输入" class="headerlink" title="三、数据输入"></a>三、数据输入</h2><h3 id="1、Scanner"><a href="#1、Scanner" class="headerlink" title="1、Scanner"></a>1、Scanner</h3><ul>
+<li>导包</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建对象</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>接收数据</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = sc.nextInt();</span><br></pre></td></tr></table></figure>
+<ul>
+<li>关闭</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sc.close();</span><br></pre></td></tr></table></figure>
+<h2 id="四、分支语句"><a href="#四、分支语句" class="headerlink" title="四、分支语句"></a>四、分支语句</h2><h3 id="1、流程控制"><a href="#1、流程控制" class="headerlink" title="1、流程控制"></a>1、流程控制</h3><ul>
+<li>顺序结构</li>
+<li>分支结构</li>
+<li>循环结构</li>
+</ul>
+<h3 id="2、if语句"><a href="#2、if语句" class="headerlink" title="2、if语句"></a>2、if语句</h3><ul>
+<li>if语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(关系表达式) &#123;</span><br><span class="line">  语句体</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>if/else语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(关系表达式) &#123;</span><br><span class="line">  语句体<span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  语句体<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li>if/连else语句</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(关系表达式) &#123;</span><br><span class="line">  语句体<span class="number">1</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  语句体<span class="number">2</span>;</span><br><span class="line">&#125;</span><br><span class="line">···</span><br><span class="line"> <span class="keyword">else</span> &#123;</span><br><span class="line">  语句体n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、switch语句"><a href="#3、switch语句" class="headerlink" title="3、switch语句"></a>3、switch语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">    语句体<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    语句体<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    语句体n;</span><br><span class="line">    [<span class="keyword">break</span>;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(表达式) &#123;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">  <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">    语句体<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">  <span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">    语句体<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">default</span>:</span><br><span class="line">    语句体n;</span><br><span class="line">    [<span class="keyword">break</span>;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="五、循环语句"><a href="#五、循环语句" class="headerlink" title="五、循环语句"></a>五、循环语句</h2><h3 id="1、for循环语句"><a href="#1、for循环语句" class="headerlink" title="1、for循环语句"></a>1、for循环语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>; 条件判断语句; ) &#123;</span><br><span class="line">  循环体语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、while循环语句"><a href="#2、while循环语句" class="headerlink" title="2、while循环语句"></a>2、while循环语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(条件判断语句) &#123;</span><br><span class="line">  循环体语句;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、do-while循环语句"><a href="#3、do-while循环语句" class="headerlink" title="3、do/while循环语句"></a>3、do/while循环语句</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span> &#123;</span><br><span class="line">  循环体语句;</span><br><span class="line">&#125;<span class="keyword">while</span>(条件判断语句);</span><br></pre></td></tr></table></figure>
+<h3 id="4、三种循环语句"><a href="#4、三种循环语句" class="headerlink" title="4、三种循环语句"></a>4、三种循环语句</h3><ul>
+<li>三种循环的区别<ul>
+<li>for和while循环先判断条件是否成立，然后决定是否执行</li>
+<li>do…while循环先执行，在判断条件是否成立</li>
+</ul>
+</li>
+<li>for和while的区别<ul>
+<li>条件控制语句所控制的自增变量，归属于for循环的语法结构中，在for循环结束后，就不能再被访问了</li>
+<li>对于while循环来说不归属其语句结构中，while结构结束后，还可以访问</li>
+</ul>
+</li>
+<li>死循环<ul>
+<li>for( ; ; ) {}</li>
+<li>while(ture) {}</li>
+<li>do {} while(ture);</li>
+</ul>
+</li>
+</ul>
+<h3 id="5、跳转控制语句"><a href="#5、跳转控制语句" class="headerlink" title="5、跳转控制语句"></a>5、跳转控制语句</h3><ul>
+<li>continue 跳过某次循环体内容的执行</li>
+<li>break 终止循环体内容的执行</li>
+</ul>
+<h3 id="6、循环嵌套"><a href="#6、循环嵌套" class="headerlink" title="6、循环嵌套"></a>6、循环嵌套</h3><h3 id="7、Random"><a href="#7、Random" class="headerlink" title="7、Random"></a>7、Random</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line">Random r = <span class="keyword">new</span> Random();</span><br><span class="line"><span class="keyword">int</span> number = r.nextInt(<span class="number">10</span>);</span><br><span class="line"><span class="comment">//获取数据的范围：[0,10)</span></span><br></pre></td></tr></table></figure>
+<h2 id="六、IDEA"><a href="#六、IDEA" class="headerlink" title="六、IDEA"></a>六、IDEA</h2><h3 id="1、IDEA的使用"><a href="#1、IDEA的使用" class="headerlink" title="1、IDEA的使用"></a>1、IDEA的使用</h3><ul>
+<li>project-module-package</li>
+</ul>
+<h3 id="2、快捷语句"><a href="#2、快捷语句" class="headerlink" title="2、快捷语句"></a>2、快捷语句</h3><ul>
+<li>psvm 快速生成main()方法</li>
+<li>sout 快速生成输出语句</li>
+<li>Ctrl+Alt+space 内容提示、代码补全</li>
+<li>Ctrl+Alt+L 格式化</li>
+</ul>
+<h3 id="3、模块"><a href="#3、模块" class="headerlink" title="3、模块"></a>3、模块</h3><h2 id="七、数组"><a href="#七、数组" class="headerlink" title="七、数组"></a>七、数组</h2><h3 id="1、数组定义格式"><a href="#1、数组定义格式" class="headerlink" title="1、数组定义格式"></a>1、数组定义格式</h3><blockquote>
+<p>一种用于存储多个相同类型数据的存储模型</p>
+</blockquote>
+<ul>
+<li>数据类型[] 变量名<ul>
+<li>int[] arr</li>
+<li>定义了一个int类型的数组，数组名是arr(推荐用这个)</li>
+</ul>
+</li>
+<li>数据类型 变量名[]<ul>
+<li>int arr[]</li>
+<li>定义了一个int类型的变量，变量名是arr数组</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、数组初始化"><a href="#2、数组初始化" class="headerlink" title="2、数组初始化"></a>2、数组初始化</h3><ul>
+<li>动态初始化<ul>
+<li>数据类型[] 变量名 = new 数据类型[数据长度]</li>
+<li>int[] arr = new int[3]<ul>
+<li>int:说明数组中元素类型是int类型,[]:说明这是一个数组,arr:数组名称</li>
+<li>new:为数组申请内存空间,int:说明数组中的元素类型是int类型,[]:说明这是一个数组,3:数组长度</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>静态初始化<ul>
+<li>数据类型[] 变量名 = new 数据类型[] {数据1,数据2,…};<ul>
+<li>int[] arr = new int[]{1,2,3};</li>
+</ul>
+</li>
+<li>数据类型[] 变量名 = {数据1,数据2,数据3,…};<ul>
+<li>int[] arr = {1,2,3};</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、数组元素访问"><a href="#3、数组元素访问" class="headerlink" title="3、数组元素访问"></a>3、数组元素访问</h3><ul>
+<li>数组名[索引]<ul>
+<li>索引从0开始</li>
+<li>索引是连续的</li>
+<li>索引逐一增加，每次加1</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、内存分配"><a href="#4、内存分配" class="headerlink" title="4、内存分配"></a>4、内存分配</h3><ul>
+<li>栈内存</li>
+<li>堆内存</li>
+</ul>
+<h3 id="5、常见问题"><a href="#5、常见问题" class="headerlink" title="5、常见问题"></a>5、常见问题</h3><ul>
+<li>索引越界<ul>
+<li>ArrayIndexOutOfBoundsException</li>
+</ul>
+</li>
+<li>空指针异常<ul>
+<li>NullPointerException</li>
+</ul>
+</li>
+</ul>
+<h3 id="6、数组常见操作"><a href="#6、数组常见操作" class="headerlink" title="6、数组常见操作"></a>6、数组常见操作</h3><ul>
+<li>遍历</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = &#123;<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;arr.length; i++) &#123;</span><br><span class="line">  arr[i] <span class="comment">//对arr[i]操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>获取最值</li>
+</ul>
+<h2 id="八、方法"><a href="#八、方法" class="headerlink" title="八、方法"></a>八、方法</h2><h3 id="1、方法概述"><a href="#1、方法概述" class="headerlink" title="1、方法概述"></a>1、方法概述</h3><blockquote>
+<p>将具有独立功能的代码块组织成为一个整体，使其具有特殊功能的代码块</p>
+</blockquote>
+<ul>
+<li>方法定义</li>
+<li>方法调用</li>
+</ul>
+<h3 id="2、方法的定义和调用"><a href="#2、方法的定义和调用" class="headerlink" title="2、方法的定义和调用"></a>2、方法的定义和调用</h3><ul>
+<li>定义</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> 方法名() &#123;</span><br><span class="line">  <span class="comment">//方法体</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">方法名();</span><br></pre></td></tr></table></figure>
+<h3 id="3、带参数方法的定义和调用"><a href="#3、带参数方法的定义和调用" class="headerlink" title="3、带参数方法的定义和调用"></a>3、带参数方法的定义和调用</h3><ul>
+<li><p>定义</p>
+<ul>
+<li>public static void 方法名() {……}</li>
+<li>public static void 方法名(数据类型 变量名, 数据类型 变量名) {……}</li>
+</ul>
+</li>
+<li><p>调用</p>
+<ul>
+<li>方法名(参数);</li>
+<li>方法名(变量名1/常量名1, 变量名2/常量名2);</li>
+</ul>
+</li>
+<li><p>形参和实参</p>
+<ul>
+<li>形参:方法定义中的参数</li>
+<li>实参:方法调用中的参数</li>
+</ul>
+</li>
+</ul>
+<h3 id="4、带返回值方法的定义和调用"><a href="#4、带返回值方法的定义和调用" class="headerlink" title="4、带返回值方法的定义和调用"></a>4、带返回值方法的定义和调用</h3><ul>
+<li>定义</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> 数据类型 方法名() &#123;</span><br><span class="line">  <span class="keyword">return</span> 数据;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>调用<ul>
+<li>数据类型 变量名 = 方法名(参数);</li>
+</ul>
+</li>
+</ul>
+<h3 id="5、方法的注意事项"><a href="#5、方法的注意事项" class="headerlink" title="5、方法的注意事项"></a>5、方法的注意事项</h3><ul>
+<li>方法不能嵌套</li>
+<li>void表示无返回值</li>
+</ul>
+<h3 id="6、方法重载"><a href="#6、方法重载" class="headerlink" title="6、方法重载"></a>6、方法重载</h3><blockquote>
+<p>在同一个类中定义的多个方法之间的关系</p>
+</blockquote>
+<h3 id="7-形参实参"><a href="#7-形参实参" class="headerlink" title="7.形参实参"></a>7.形参实参</h3><ul>
+<li>l</li>
+<li>引用类型</li>
+</ul>
+<h2 id="九、面向对象基础"><a href="#九、面向对象基础" class="headerlink" title="九、面向对象基础"></a>九、面向对象基础</h2><h3 id="1、类和对象"><a href="#1、类和对象" class="headerlink" title="1、类和对象"></a>1、类和对象</h3><blockquote>
+<p>对一类具有共同属性和行为的事物的抽象</p>
+</blockquote>
+<ul>
+<li>类是对象的数据类型</li>
+<li>类是具有相同属性和行为的一组对象的集合</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名</span>&#123;</span><br><span class="line">  <span class="comment">//成员变量</span></span><br><span class="line">  变量<span class="number">1</span>的数据类型 变量<span class="number">1</span>;</span><br><span class="line">  变量<span class="number">2</span>的数据类型 变量<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//成员方法</span></span><br><span class="line">  方法<span class="number">1</span>;</span><br><span class="line">  方法<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、成员变量和局部变量"><a href="#2、成员变量和局部变量" class="headerlink" title="2、成员变量和局部变量"></a>2、成员变量和局部变量</h3><table>
+<thead>
+<tr>
+<th align="center">区别</th>
+<th align="center">成员变量</th>
+<th align="center">局部变量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">类中位置不同</td>
+<td align="center">类中方法外</td>
+<td align="center">方法内或方法声明上</td>
+</tr>
+<tr>
+<td align="center">内存中位置不同</td>
+<td align="center">堆内存</td>
+<td align="center">栈内存</td>
+</tr>
+<tr>
+<td align="center">生命周期不同</td>
+<td align="center">随着对象的存在而存在，随着对象的消失而消失</td>
+<td align="center">随着方法的调用而存在，随着方法的调用完毕而消失</td>
+</tr>
+<tr>
+<td align="center">初始化值不同</td>
+<td align="center">有默认的初始化值</td>
+<td align="center">没有默认的初始化值，必须先定义赋值才能使用</td>
+</tr>
+</tbody></table>
+<h3 id="3、封装"><a href="#3、封装" class="headerlink" title="3、封装"></a>3、封装</h3><h3 id="4、构造方法"><a href="#4、构造方法" class="headerlink" title="4、构造方法"></a>4、构造方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//完成对象数据的初始化</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 类名 </span>&#123;</span><br><span class="line">    修饰符 类名(参数) &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>构造方法的构建<ul>
+<li>如果没有定义构造方法，系统将给出一个默认的构造方法</li>
+<li>如果定义了构造方法，系统将不再提供默认的构造方法</li>
+</ul>
+</li>
+<li>构造方法的重载<ul>
+<li>如果自定义了带参构造方法，还要使用无参构造方法，就必须再写一个无参数构造方法</li>
+</ul>
+</li>
+<li>推荐<br>无论如何使用，都建议书写无参数构造方法</li>
+</ul>
+<h2 id="十、字符串"><a href="#十、字符串" class="headerlink" title="十、字符串"></a>十、字符串</h2><h3 id="1、API"><a href="#1、API" class="headerlink" title="1、API"></a>1、API</h3><blockquote>
+<p>Application Programming Interface</p>
+</blockquote>
+<h3 id="2、String"><a href="#2、String" class="headerlink" title="2、String"></a>2、String</h3><ul>
+<li>java程序中的双引号字符串，都是String类的对象</li>
+<li>字符串不可变，他们的值在创建后不能被更改</li>
+<li>虽然String的值是不可变的，但是他们可以被共享</li>
+<li>字符串效果上相当于字符数组(char[]),但是底层原理是字节数组(byte[])</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public String()</td>
+<td align="center">创建一个空白字符串对象，不含有任何内容</td>
+</tr>
+<tr>
+<td align="center">public String(char[] chs)</td>
+<td align="center">根据字符数组的内容，来创建字符串对象</td>
+</tr>
+<tr>
+<td align="center">public String(byte[] bys)</td>
+<td align="center">根据字节数组的内容，来创建字符串对象</td>
+</tr>
+<tr>
+<td align="center">String s = “abc”</td>
+<td align="center">直接赋值的方式创建字符串对象，内容就是abc</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public boolean equals(Object anObject)</td>
+<td align="center">比较字符串的内容</td>
+</tr>
+<tr>
+<td align="center">public char charAt(int index)</td>
+<td align="center">返回指定索引处的char值</td>
+</tr>
+<tr>
+<td align="center">public int length()</td>
+<td align="center">返回此字符串的长度</td>
+</tr>
+</tbody></table>
+<h3 id="3、StringBuilding"><a href="#3、StringBuilding" class="headerlink" title="3、StringBuilding"></a>3、StringBuilding</h3><blockquote>
+<p>可变的字符串类</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public StringBuilder()</td>
+<td align="center">创建一个空白可变字符串对象，不含有任何内容</td>
+</tr>
+<tr>
+<td align="center">public StringBuilder(String str)</td>
+<td align="center">根据字符串的内容，来创建可变字符串对象</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public StringBuilder append(任意类型)</td>
+<td align="center">添加数据，并返回对象本身</td>
+</tr>
+<tr>
+<td align="center">public StringBuilder reverse()</td>
+<td align="center">返回相反的字符序列</td>
+</tr>
+</tbody></table>
+<h3 id="4、String和StringBuilder互相转换"><a href="#4、String和StringBuilder互相转换" class="headerlink" title="4、String和StringBuilder互相转换"></a>4、String和StringBuilder互相转换</h3><ul>
+<li>StringBuilder转换为String<ul>
+<li>public String toString()</li>
+</ul>
+</li>
+<li>String转换为StringBuilder(String s)<ul>
+<li>public StringBuilder(String s):StringBuilder构造函数</li>
+</ul>
+</li>
+</ul>
+<h2 id="十一、集合基础"><a href="#十一、集合基础" class="headerlink" title="十一、集合基础"></a>十一、集合基础</h2><h3 id="1、集合概述"><a href="#1、集合概述" class="headerlink" title="1、集合概述"></a>1、集合概述</h3><blockquote>
+<p>提供一种存储空间可变的存储模型，存储的数据容量可以发生改变</p>
+</blockquote>
+<ul>
+<li>ArrayList&lt; E &gt;:<ul>
+<li>可调整大小的数组实现</li>
+<li>&lt; E &gt;:是一种特殊的数据类型，泛型</li>
+<li>如:ArrayList&lt; String &gt;,ArrayList&lt; Student &gt;</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public ArrayList()</td>
+<td align="center">创建一个空的集合对象</td>
+</tr>
+<tr>
+<td align="center">public boolean add(E e)</td>
+<td align="center">将指定的元素追加到此集合的末尾</td>
+</tr>
+<tr>
+<td align="center">public void add(int index,E element)</td>
+<td align="center">在此集合中的指定位置插入指定元素</td>
+</tr>
+</tbody></table>
+<ul>
+<li>ArrayList常用方法</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">方法名</th>
+<th align="center">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">public boolean remove(Object o)</td>
+<td align="center">删除指定的元素，返回删除是否成功</td>
+</tr>
+<tr>
+<td align="center">public E remove(int index)</td>
+<td align="center">删除指定索引处的元素，返回被删除的元素</td>
+</tr>
+<tr>
+<td align="center">public E set(int index,E element)</td>
+<td align="center">修改指定索引处的元素，返回被删除的元素</td>
+</tr>
+<tr>
+<td align="center">public E get(int index)</td>
+<td align="center">返回指定索引处的元素</td>
+</tr>
+<tr>
+<td align="center">public int size()</td>
+<td align="center">返回集合中的元素的个数</td>
+</tr>
+</tbody></table>
+<h2 id="十二、继承"><a href="#十二、继承" class="headerlink" title="十二、继承"></a>十二、继承</h2><h3 id="1、继承概述"><a href="#1、继承概述" class="headerlink" title="1、继承概述"></a>1、继承概述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 子类名 <span class="keyword">extends</span> 父类名 </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、好处及弊端"><a href="#2、好处及弊端" class="headerlink" title="2、好处及弊端"></a>2、好处及弊端</h3><ul>
+<li>好处<ul>
+<li>提高了代码的复用性</li>
+<li>提高了代码的维护性</li>
+</ul>
+</li>
+<li>弊端<ul>
+<li>子类和父类耦合性提高，独立性降低</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、super"><a href="#3、super" class="headerlink" title="3、super"></a>3、super</h3><ul>
+<li>this代表本类对象的引用</li>
+<li>super代表父类存储空间的标识</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">访问成员变量</th>
+<th align="center">访问构造方法</th>
+<th align="center">访问成员方法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">this</td>
+<td align="center">this.成员变量</td>
+<td align="center">this(…)</td>
+<td align="center">this.成员方法()</td>
+</tr>
+<tr>
+<td align="center">super</td>
+<td align="center">super.成员变量</td>
+<td align="center">super(…)</td>
+<td align="center">super.成员方法()</td>
+</tr>
+</tbody></table>
+<h3 id="4、继承中构造方法的访问特点"><a href="#4、继承中构造方法的访问特点" class="headerlink" title="4、继承中构造方法的访问特点"></a>4、继承中构造方法的访问特点</h3><ul>
+<li>子类中所有的构造方法默认都会访问父类中无参的构造方法<ul>
+<li>因为子类会继承父类中的数据，可能还会使用父类的数据。所以，子类初始化之前，一定要先完成父类数据的初始化</li>
+<li>每一个子类构造方法的第一条语句默认都是：super()</li>
+</ul>
+</li>
+<li>如果父类中没有无参构造方法，只有带参构造方法，该如何办？<ul>
+<li>通过使用super关键字去显示的调用父类的带参构造方法</li>
+<li>在父类中自己提供一个无参构造方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="5、继承中成员方法的访问特点"><a href="#5、继承中成员方法的访问特点" class="headerlink" title="5、继承中成员方法的访问特点"></a>5、继承中成员方法的访问特点</h3><ul>
+<li>通过子类对象访问一个方法<ul>
+<li>首先在子类成员范围找</li>
+<li>然后在父类成员范围找</li>
+<li>如果都没有就报错</li>
+</ul>
+</li>
+</ul>
+<h3 id="6、方法重写"><a href="#6、方法重写" class="headerlink" title="6、方法重写"></a>6、方法重写</h3><ul>
+<li>子类中出现和父类中一模一样的方法声明</li>
+<li>方法重写的应用<ul>
+<li>当子类需要父类的功能，而功能主体子类有自己特有内容时，可以重写父类中的方法，这样，即沿袭了父类的功能，又定义了子类特有的内容。</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>@Override</p>
+</blockquote>
+<ul>
+<li>是一个注解</li>
+<li>可以帮助检查重写方法声明的正确性</li>
+</ul>
+<h3 id="7、方法重写的注意事项"><a href="#7、方法重写的注意事项" class="headerlink" title="7、方法重写的注意事项"></a>7、方法重写的注意事项</h3><ul>
+<li>私有方法不能被重写（父类私有成员子类是不能继承的）</li>
+<li>子类方法访问权限不能更低(public&gt;默认&gt;私有)</li>
+</ul>
+<h3 id="8、java中继承的注意事项"><a href="#8、java中继承的注意事项" class="headerlink" title="8、java中继承的注意事项"></a>8、java中继承的注意事项</h3><ul>
+<li>Java中类只支持单继承，不支持多继承</li>
+<li>java中类支持多层继承</li>
+</ul>
+<h2 id="十三、修饰符"><a href="#十三、修饰符" class="headerlink" title="十三、修饰符"></a>十三、修饰符</h2><h3 id="1、包"><a href="#1、包" class="headerlink" title="1、包"></a>1、包</h3><blockquote>
+<p>就是文件夹，对类进行分类管理</p>
+</blockquote>
+<ul>
+<li>自动建包<ul>
+<li>编译 javac -d . HelloWorld.java</li>
+<li>运行 java 包名.HelloWorld</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、导包"><a href="#2、导包" class="headerlink" title="2、导包"></a>2、导包</h3><ul>
+<li>可以直接使用，写清类的全路径 包名.函数()<ul>
+<li>如 java.util.Scanner</li>
+</ul>
+</li>
+<li>导包<ul>
+<li>import java.util.Scanner</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、修饰符"><a href="#3、修饰符" class="headerlink" title="3、修饰符"></a>3、修饰符</h3><h4 id="1、权限修饰符"><a href="#1、权限修饰符" class="headerlink" title="1、权限修饰符"></a>1、权限修饰符</h4><table>
+<thead>
+<tr>
+<th align="center">修饰符</th>
+<th align="center">同一类中</th>
+<th align="center">同一包中的子类或无关类</th>
+<th align="center">不同包的子类</th>
+<th align="center">不同包的无关类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">private</td>
+<td align="center">T</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">默认</td>
+<td align="center">T</td>
+<td align="center">T</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">protected</td>
+<td align="center">T</td>
+<td align="center">T</td>
+<td align="center">T</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">public</td>
+<td align="center">T</td>
+<td align="center">T</td>
+<td align="center">T</td>
+<td align="center">T</td>
+</tr>
+</tbody></table>
+<h4 id="2、状态修饰符"><a href="#2、状态修饰符" class="headerlink" title="2、状态修饰符"></a>2、状态修饰符</h4><ul>
+<li>final<ul>
+<li><blockquote>
+<p>可以修饰成员方法，成员变量，类</p>
+</blockquote>
+<ul>
+<li>修饰方法：表明该方法是最终方法，不能被重写</li>
+<li>修饰变量：表明该变量是常量，不能再次被赋值</li>
+<li>修饰类：表明该类是最终类，不能被继承</li>
+</ul>
+</li>
+<li><blockquote>
+<p>修饰局部变量</p>
+</blockquote>
+<ul>
+<li>变量是基本类型：final修饰指的是基本类型的数据值不能发生变化</li>
+<li>变量是引用类型：final修饰指的是引用类型的地址值不能发生改变，但是地址里面的内容可以发生变化</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>static<ul>
+<li><blockquote>
+<p>修饰成员方法，成员变量</p>
+</blockquote>
+<ul>
+<li>被类的所有对象共享</li>
+<li>可用通过类名调用(推荐)</li>
+</ul>
+</li>
+<li>非静态成员方法访问特点<ul>
+<li>可以访问所有，静态或非静态成员变量，静态或非静态成员方法</li>
+</ul>
+</li>
+<li>静态成员方法<ul>
+<li>只可以访问静态成员方法或变量</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="十四、多态"><a href="#十四、多态" class="headerlink" title="十四、多态"></a>十四、多态</h2><h3 id="1、多态概述"><a href="#1、多态概述" class="headerlink" title="1、多态概述"></a>1、多态概述</h3><blockquote>
+<p>同一个对象，在不同时刻表现出来的不同形态</p>
+</blockquote>
+<ul>
+<li>多态的前提和体现<ul>
+<li>有继承/实现关系</li>
+<li>有方法重写</li>
+<li>有父类引用指向子类对象</li>
+</ul>
+</li>
+<li>多态中成员访问特点<ul>
+<li>成员变量：编译看左边，执行看左边</li>
+<li>成员方法：编译看左边，执行看右边</li>
+</ul>
+</li>
+<li>为什么成员变量和成员方法的访问不一样呢<ul>
+<li>因为成员方法有重写，而成员变量没有</li>
+</ul>
+</li>
+<li>多态转型<ul>
+<li>向上转型<ul>
+<li>从子到父</li>
+<li>父类引用指向子类对象</li>
+</ul>
+</li>
+<li>向下转型<ul>
+<li>从父到子</li>
+<li>父类引用转为子类对象</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、抽象类"><a href="#2、抽象类" class="headerlink" title="2、抽象类"></a>2、抽象类</h3><blockquote>
+<p>在java中，一个没有方法体的方法应该定义为抽象方法，而类中如果有抽象方法，该类必须定义为抽象类</p>
+</blockquote>
+<ul>
+<li>抽象类和抽象方法必须使用abstract关键字修饰</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>抽象类中不一定有抽象方法，但抽象方法的类一定是抽象类</li>
+<li>抽象类不能实例化<ul>
+<li>抽象类如何实例化呢？参照多态的方式，通过子类对象实例化，这叫抽象类多态</li>
+</ul>
+</li>
+<li>抽象类的子类<ul>
+<li>要么重写抽象类中的所有抽象方法</li>
+<li>要么是抽象类</li>
+</ul>
+</li>
+<li>抽象类的访问特点<ul>
+<li>成员变量<ul>
+<li>可以是变量，也可以是常量</li>
+</ul>
+</li>
+<li>构造方法<ul>
+<li>有构造方法，但是不能实例化</li>
+<li>构造方法的作用：用于子类访问父类数据的初始化</li>
+</ul>
+</li>
+<li>成员方法<ul>
+<li>可以有抽象方法，限定子类必须完成某些方法(即必须重写)</li>
+<li>可以有非抽象方法，提高代码复用性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3、接口"><a href="#3、接口" class="headerlink" title="3、接口"></a>3、接口</h3><blockquote>
+<p>接口就是一种公共的规范标准，java中的接口更多的体现在对行为的抽象</p>
+</blockquote>
+<ul>
+<li>接口特点<ul>
+<li>接口用关键字interface修饰<ul>
+<li>public interface 接口名{}</li>
+</ul>
+</li>
+<li>类实现接口用implement表示<ul>
+<li>public class 类名 implements 接口名 {}</li>
+</ul>
+</li>
+<li>接口不能实例化<ul>
+<li>接口如何实例化？参照多态形式，通过实现类对象实例化</li>
+<li>多态的形式：具体类多肽，抽象类多态，接口多态</li>
+<li>多态的前提：有继承或实现关系；有方法重写；有父(类/接口)引用指向(子/实现)类对象</li>
+</ul>
+</li>
+<li>接口的实现类<ul>
+<li>要么重写接口中的所有抽象方法</li>
+<li>要么是抽象类</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>接口的成员特点<ul>
+<li>成员变量<ul>
+<li>只能是常量</li>
+<li>默认修饰符:public static final</li>
+</ul>
+</li>
+<li>构造方法<ul>
+<li>接口没有构造方法，因为接口主要对行为进行抽象的，没有具体存在</li>
+<li>一个类如果没有父类，默认继承自Object类</li>
+</ul>
+</li>
+<li>成员方法<ul>
+<li>只能是抽象方法</li>
+<li>默认修饰符:public abstract</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>类和接口的关系<ul>
+<li>类和类的关系<ul>
+<li>继承关系，只能单继承，但是可以多层继承</li>
+</ul>
+</li>
+<li>类和接口的关系<ul>
+<li>实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口</li>
+</ul>
+</li>
+<li>接口和接口的关系<ul>
+<li>继承关系，可以单继承，也可以多继承</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>抽象类和接口的区别<ul>
+<li>成员区别<ul>
+<li>抽象类：变量，常量;有构造方法;有抽象方法，也有非抽象方法</li>
+<li>接口：常量;抽象方法</li>
+</ul>
+</li>
+<li>设计理念区别<ul>
+<li>抽象类：对象抽象，包括属性、行为</li>
+<li>接口：对行为抽象，主要是行为</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="十五、形参和返回值"><a href="#十五、形参和返回值" class="headerlink" title="十五、形参和返回值"></a>十五、形参和返回值</h2><h3 id="1、形参和返回值"><a href="#1、形参和返回值" class="headerlink" title="1、形参和返回值"></a>1、形参和返回值</h3><h4 id="1、类名作为形参和返回值"><a href="#1、类名作为形参和返回值" class="headerlink" title="1、类名作为形参和返回值"></a>1、类名作为形参和返回值</h4><ul>
+<li>方法的形参是类名，其实需要的是该类的对象</li>
+<li>方法的返回值是类名，其实返回的是该类的对象</li>
+</ul>
+<h4 id="2、抽象类名作为形参和返回值"><a href="#2、抽象类名作为形参和返回值" class="headerlink" title="2、抽象类名作为形参和返回值"></a>2、抽象类名作为形参和返回值</h4><ul>
+<li>方法的形参是抽象类名，其实需要的是该抽象类的子类对象</li>
+<li>方法的返回值是抽象类名，其实返回的是该抽象类的子类对象</li>
+</ul>
+<h4 id="3、接口名作为形参和返回值"><a href="#3、接口名作为形参和返回值" class="headerlink" title="3、接口名作为形参和返回值"></a>3、接口名作为形参和返回值</h4><ul>
+<li>方法的形参是接口名，其实需要的是该接口的实现类对象</li>
+<li>方法的返回值是接口名，其实返回的是该接口的实现类对象</li>
+</ul>
+<h3 id="2、内部类"><a href="#2、内部类" class="headerlink" title="2、内部类"></a>2、内部类</h3><blockquote>
+<p>内部类:就是在一个类中定义一个类</p>
+</blockquote>
+<ul>
+<li>内部类可以直接访问外部类的成员，包括私有</li>
+<li>外部类要访问内部类的成员，必须创建对象</li>
+</ul>
+<h4 id="1、成员内部类"><a href="#1、成员内部类" class="headerlink" title="1、成员内部类"></a>1、成员内部类</h4><ul>
+<li>格式 外部类名.内部类名 对象名 = 外部类对象.内部类对象;</li>
+<li>如 Outer.Inner oi = new Outer().new Inner();</li>
+</ul>
+<h4 id="2、局部内部类"><a href="#2、局部内部类" class="headerlink" title="2、局部内部类"></a>2、局部内部类</h4><ul>
+<li>局部内部类是在方法中定义的类，所以外界是无法直接使用，需要在方法内部创建对象并使用</li>
+<li>该类可以直接访问外部类的成员，也可以访问方法内的局部变量</li>
+</ul>
+<h4 id="3、匿名内部类-局部内部类一种"><a href="#3、匿名内部类-局部内部类一种" class="headerlink" title="3、匿名内部类-局部内部类一种"></a>3、匿名内部类-局部内部类一种</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> 类名或者接口名() &#123;</span><br><span class="line">  重写方法;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>本质：是一个继承了该类或者实现了该接口的子类匿名对象</p>
+</blockquote>
+<h3 id="3、常用API"><a href="#3、常用API" class="headerlink" title="3、常用API"></a>3、常用API</h3><h4 id="1、MATH"><a href="#1、MATH" class="headerlink" title="1、MATH"></a>1、MATH</h4><h4 id="2、System"><a href="#2、System" class="headerlink" title="2、System"></a>2、System</h4><ul>
+<li>exit():非零表示异常终止</li>
+<li>currentTimeMillis():返回当前时间与1970年1月1日之间的时间(ms)</li>
+</ul>
+<h4 id="3、Object"><a href="#3、Object" class="headerlink" title="3、Object"></a>3、Object</h4><blockquote>
+<p>Object是类层次结构的根</p>
+</blockquote>
+<ul>
+<li>tostring()返回对象的字符串表示形式，建议重写，自动生成</li>
+<li>equals()比较对象是否相等，默认是比较地址，重写可以比较内容，自动生成</li>
+</ul>
+<h4 id="4、Arrays"><a href="#4、Arrays" class="headerlink" title="4、Arrays"></a>4、Arrays</h4><ul>
+<li>冒泡排序</li>
+</ul>
+<blockquote>
+<p>对要进行排序的数据中相邻的数据进行两两比较，将较大的数据放在后面，依次对所有的数据进行操作，直至所有数据按要求完成排序。</p>
+</blockquote>
+<ul>
+<li>toString()返回指定数组的内容的字符串表示形式</li>
+<li>sort()按照数字顺序排列指定的数组</li>
+</ul>
+<h4 id="5、基本类型包装类"><a href="#5、基本类型包装类" class="headerlink" title="5、基本类型包装类"></a>5、基本类型包装类</h4><blockquote>
+<p>将基本数据类型封装成对象的好处在于可以在对象中定义更多的功能方法操作该数据常用的操作之一：用于基本数据类型与字符串之间得转换</p>
+</blockquote>
+<ul>
+<li>Interger<ul>
+<li>valueof</li>
+</ul>
+</li>
+<li>int和string相互转换<ul>
+<li>int-&gt;string<ul>
+<li>1、String s1 = “” + number;</li>
+<li>2、String s2 = String.valueOf(number);</li>
+</ul>
+</li>
+<li>string-&gt;int<ul>
+<li>1、Integer i = Integer.valueOf(s); int x = i.intValue();</li>
+<li>2、int y = Integer.parseInt(s);</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>自动装箱和拆箱<ul>
+<li>装箱：把基本数据类型转换为对应的包装类类型</li>
+<li>拆箱：把包装类类型转换成对应的基本数据类型</li>
+<li>在使用包装类型时，如果要操作，最好先判断是否为NULL</li>
+</ul>
+</li>
+</ul>
+<h4 id="6、日期类"><a href="#6、日期类" class="headerlink" title="6、日期类"></a>6、日期类</h4><h5 id="1、基本"><a href="#1、基本" class="headerlink" title="1、基本"></a>1、基本</h5><ul>
+<li>Date();</li>
+<li>getTime(); 获取的是日期对象从1970.1.1到现在的毫秒值</li>
+<li>setTime();</li>
+</ul>
+<h5 id="2、SimpleDateFormat"><a href="#2、SimpleDateFormat" class="headerlink" title="2、SimpleDateFormat"></a>2、SimpleDateFormat</h5><ul>
+<li>日期格式化和解析</li>
+<li>y-年 M-月 d-日 H-时 m-分 s-秒</li>
+<li>格式化(从Date到String)<ul>
+<li>format(Date date):从日期格式化成日期/时间字符串</li>
+</ul>
+</li>
+<li>解析(从String到Date)<ul>
+<li>parse(String source):从给定字符串的开始解析文本以生成日期</li>
+</ul>
+</li>
+</ul>
+<h5 id="3、Calendar"><a href="#3、Calendar" class="headerlink" title="3、Calendar"></a>3、Calendar</h5><ul>
+<li>get() 返回给定日历字段的值,int year = c.get(Calendar.YEAR)</li>
+<li>add()</li>
+<li>set() 设置当前日历的年月日</li>
+</ul>
+<h3 id="4、异常"><a href="#4、异常" class="headerlink" title="4、异常"></a>4、异常</h3><ul>
+<li>try{} catch() {}</li>
+<li>throws 异常类名</li>
+<li>throw</li>
+</ul>
+<h4 id="1、Throwable"><a href="#1、Throwable" class="headerlink" title="1、Throwable"></a>1、Throwable</h4><ul>
+<li>getMessage() 返回此throwable的详细消息字符串</li>
+<li>toString() 返回此可抛出的简短描述</li>
+<li>printStackTrace() 把异常的错误信息输出在控制台</li>
+</ul>
+<h2 id="十六、集合进阶"><a href="#十六、集合进阶" class="headerlink" title="十六、集合进阶"></a>十六、集合进阶</h2><ul>
+<li>集合<ul>
+<li>Collection 单列<ul>
+<li>List 元素可重复<ul>
+<li>ArryList</li>
+<li>LinkedList</li>
+</ul>
+</li>
+<li>Set 元素不可重复<ul>
+<li>HashSet</li>
+<li>TreeSet</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Map 双列<ul>
+<li>HashMap</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1、Collection"><a href="#1、Collection" class="headerlink" title="1、Collection"></a>1、Collection</h3><h4 id="1、常用方法"><a href="#1、常用方法" class="headerlink" title="1、常用方法"></a>1、常用方法</h4><ul>
+<li>add() 添加元素</li>
+<li>remove() 从集合中移除指定元素</li>
+<li>clear() 清空集合中的元素</li>
+<li>contains() 判断集合中是否存在指定的元素</li>
+<li>isEmpty() 判断集合是否为空</li>
+<li>size() 集合的长度，即集合中元素个数</li>
+</ul>
+<h4 id="2、遍历"><a href="#2、遍历" class="headerlink" title="2、遍历"></a>2、遍历</h4><p>Iterator:迭代器，集合专用遍历方式</p>
+<ul>
+<li>Iterator <E> iterator:返回此集合中元素的迭代器</li>
+<li>E next():返回迭代中的下一个元素</li>
+<li>bolean hasNext():如果迭代具有更多元素，则返回true</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Iterator&lt;String&gt; it = c.iterator();</span><br><span class="line"><span class="keyword">while</span>(it.hasNext()) &#123;</span><br><span class="line">  String s = it.next();</span><br><span class="line">  System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2、List"><a href="#2、List" class="headerlink" title="2、List"></a>2、List</h3><p>有序集合(序列)</p>
+<h4 id="1、方法"><a href="#1、方法" class="headerlink" title="1、方法"></a>1、方法</h4><ul>
+<li><p>add()</p>
+</li>
+<li><p>remove()</p>
+</li>
+<li><p>set()</p>
+</li>
+<li><p>get()</p>
+</li>
+<li><p>并发修改异常</p>
+<ul>
+<li>原因:迭代过程中，通过集合对象修改了集合中元素的长度，造成了迭代器获取元素中判断预期修改值和实际修改值不一致</li>
+<li>解决方案:用for循环遍历，然后用集合对象做相应操作即可</li>
+</ul>
+</li>
+</ul>
+<h4 id="2、迭代器ListIterator"><a href="#2、迭代器ListIterator" class="headerlink" title="2、迭代器ListIterator"></a>2、迭代器ListIterator</h4><ul>
+<li>E next();</li>
+<li>boolean hasNext();</li>
+<li>E previous();</li>
+<li>boolean hasPrevious();</li>
+<li>void add(E e);</li>
+</ul>
+<h4 id="3、增强for循环"><a href="#3、增强for循环" class="headerlink" title="3、增强for循环"></a>3、增强for循环</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] arr = &#123;&#125;;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i : arr) &#123;</span><br><span class="line">  对i操作;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3、数据结构"><a href="#3、数据结构" class="headerlink" title="3、数据结构"></a>3、数据结构</h3><ul>
+<li>栈 先进后出</li>
+<li>队列 先进先出</li>
+<li>数组 查询快，增删慢</li>
+<li>链表 增删快，查询必须从头(head)开始(对比数组)</li>
+</ul>
+<h3 id="4、list集合子类"><a href="#4、list集合子类" class="headerlink" title="4、list集合子类"></a>4、list集合子类</h3><ul>
+<li>ArrayList:底层数据结构是数组，查询快，增删慢</li>
+<li>LinkedList:底层数据结构是链表，查询慢，增删快</li>
+</ul>
+<h3 id="5、set集合"><a href="#5、set集合" class="headerlink" title="5、set集合"></a>5、set集合</h3><h4 id="1、Hash值"><a href="#1、Hash值" class="headerlink" title="1、Hash值"></a>1、Hash值</h4><blockquote>
+<p>哈希值:是jdk根据对象的地址或者字符串或者数字算出来的int类型的数值</p>
+</blockquote>
+<ul>
+<li>默认情况下，同一对象的哈希值是相同的，不同对象的哈希值是不同的</li>
+<li>通过方法重写，可以实现不同对象的哈希值是相同的</li>
+</ul>
+<h3 id="6、HashSet"><a href="#6、HashSet" class="headerlink" title="6、HashSet"></a>6、HashSet</h3><ul>
+<li>哈希表</li>
+</ul>
+<h3 id="7、LinedHashSet"><a href="#7、LinedHashSet" class="headerlink" title="7、LinedHashSet"></a>7、LinedHashSet</h3><ul>
+<li>哈希表和链表实现的set接口，具有可预测的迭代顺序</li>
+<li>由链表保证元素有序，元素存储和取出的顺序是一致的</li>
+<li>由哈希表保证元素唯一，没有重复的元素</li>
+</ul>
+<h3 id="8、TreeSet"><a href="#8、TreeSet" class="headerlink" title="8、TreeSet"></a>8、TreeSet</h3><ul>
+<li>元素有序<ul>
+<li>TreeSet():根据其元素的自然排序进行排序,如从小到大，从a到z</li>
+<li>TreeSet(Comparator comparator):根据指定额比较器进行排序</li>
+</ul>
+</li>
+<li>没有带索引的方法，不能使用普通for循环遍历</li>
+<li>不包含重复元素</li>
+</ul>
+<p>比较器排序Comparator的使用</p>
+<ul>
+<li>用TreeSet集合存储自定义对象，带参构造方法使用的是比较器排序对元素进行排序的</li>
+<li>比较器排序，就是让集合构造方法接收Comparator的实现类对象，重写compare(T o1, T o2)方法</li>
+<li>重写方法时，一定要注意排序规则必须按照要求的主要条件和次要条件来写</li>
+</ul>
+<h3 id="9、泛型"><a href="#9、泛型" class="headerlink" title="9、泛型"></a>9、泛型</h3><h4 id="1、泛型类"><a href="#1、泛型类" class="headerlink" title="1、泛型类"></a>1、泛型类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="2、泛型方法"><a href="#2、泛型方法" class="headerlink" title="2、泛型方法"></a>2、泛型方法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(T t)</span> </span>&#123;&#125; </span><br></pre></td></tr></table></figure>
+<h4 id="3、泛型接口"><a href="#3、泛型接口" class="headerlink" title="3、泛型接口"></a>3、泛型接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt; </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4、类型通配符"><a href="#4、类型通配符" class="headerlink" title="4、类型通配符"></a>4、类型通配符</h4><ul>
+<li>类型通配符:&lt;?&gt;<ul>
+<li>List&lt;?&gt;:可以匹配任意类型</li>
+</ul>
+</li>
+<li>类型通配符上限:&lt;? extends 类型&gt;<ul>
+<li>List&lt;? extends Number&gt;:表示的类型是Number或者其子类型</li>
+</ul>
+</li>
+<li>类型通配符下限:&lt;? super 类型&gt;<ul>
+<li>List&lt;? super Number&gt;:表示的类型是Number或者其父类型</li>
+</ul>
+</li>
+</ul>
+<h3 id="10、Map-HashMap"><a href="#10、Map-HashMap" class="headerlink" title="10、Map/HashMap"></a>10、Map/HashMap</h3><h4 id="1、方法-1"><a href="#1、方法-1" class="headerlink" title="1、方法"></a>1、方法</h4><ul>
+<li>put():添加元素</li>
+<li>remove():根据键删除键对应元素</li>
+<li>clear():移除所有的键值对元素</li>
+<li>containsKey():判断集合是否包含指定的键</li>
+<li>containsValue():判断集合是否包含指定的值</li>
+<li>isEmpty():判断集合是否为空</li>
+<li>size():集合的长度</li>
+</ul>
+<h4 id="2、遍历-1"><a href="#2、遍历-1" class="headerlink" title="2、遍历"></a>2、遍历</h4><ul>
+<li>法一</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; keySet = map.keySet();</span><br><span class="line"><span class="keyword">for</span>(String key : keySet) &#123;</span><br><span class="line">  String value = map.get(key);</span><br><span class="line">  System.out.println(key + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>法二</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Map.Entry&lt;String, String&gt;&gt; entrySet = map.entrySet();</span><br><span class="line"><span class="keyword">for</span>&lt;Map.Entry&lt;String, String&gt; en : entrySet&gt; &#123;</span><br><span class="line">  String key = en.getKey();</span><br><span class="line">  String value = en.getValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="11、Collections"><a href="#11、Collections" class="headerlink" title="11、Collections"></a>11、Collections</h3><h4 id="1、方法-2"><a href="#1、方法-2" class="headerlink" title="1、方法"></a>1、方法</h4><ul>
+<li>public static &lt;T extends Comparable&lt;? super T&gt;&gt; void sort(List<T> list):将指定的列表按升序排序</li>
+<li>public static void reverse(List&lt;?&gt; list):反转指定列表中元素的顺序</li>
+<li>public static void shuffle(list&lt;?&gt; list):指定默认的随机源随机排列指定的列表</li>
+</ul>
+<h2 id="十七、文件、IO流数据处理"><a href="#十七、文件、IO流数据处理" class="headerlink" title="十七、文件、IO流数据处理"></a>十七、文件、IO流数据处理</h2><h3 id="1、File类"><a href="#1、File类" class="headerlink" title="1、File类"></a>1、File类</h3><p>File:是文件和目录路径名的抽象表示</p>
+<ul>
+<li><p>文件和目录是可以通过File封装成对象的</p>
+</li>
+<li><p>File(String pathname):通过给定的路径名字符串转换成抽象路径名来创建新的File实例</p>
+</li>
+<li><p>File(String parent, String child):从父路径名字符串和子路径名字符串创建新的File实例</p>
+</li>
+<li><p>File(File parent, String child):从父抽象路径名和子路径名字符串创建新的File实例</p>
+</li>
+<li><p>createNewFile():当具有该文件名称的文件不存在时，创建一个由该抽象路径名的新空文件夹</p>
+</li>
+<li><p>mkdir():创建由此抽象路径名命名的目录</p>
+</li>
+<li><p>mkdirs():创建由此抽象路径名命名的目录，包括任何必须但不存在的父目录</p>
+</li>
+</ul>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><h3 id="2、字节流"><a href="#2、字节流" class="headerlink" title="2、字节流"></a>2、字节流</h3><h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li>启动多线程 myThread.start()</li>
+<li>setName():设置线程名称</li>
+<li>getName():返回此线程名称</li>
+<li>currentThread():获取当前线程名称</li>
+</ul>
+<h3 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h3><ul>
+<li>setPriority():设置线程优先级，1-10</li>
+<li>getPriority():获取线程优先级</li>
+<li>sleep():使当前正在执行的线程停留指定毫秒数</li>
+<li>join():等待这个线程死亡</li>
+<li>setDaemon(boolean on):守护线程</li>
+</ul>
+<h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><p>网络编程三要素：IP地址，端口和协议</p>
+<h3 id="1、InetAddress"><a href="#1、InetAddress" class="headerlink" title="1、InetAddress"></a>1、InetAddress</h3><ul>
+<li>static InetAddress getByName(String host):确定主机名称的IP地址。主机名称可以是机器名称，也可以是IP名称</li>
+<li>String getHostName():获取此IP地址的主机名</li>
+<li>String getHostAddress():返回文本显示中的IP地址字符串</li>
+</ul>
+<h2 id="lambda"><a href="#lambda" class="headerlink" title="lambda"></a>lambda</h2><ul>
+<li>格式:(形式参数) -&gt; {代码块}</li>
+<li>形式参数:如果有多个参数，参数之间用逗号隔开;如果没有参数，留空</li>
+<li>-&gt;:由英文中画线和大于号组成，固定写法。代表指定动作</li>
+<li>代码块:具体要做的内容</li>
+<li>适用前提:有一个接口，接口中有且仅有一个抽象方法</li>
+</ul>
+<h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2>
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Java基础学习笔记</li>
+        <li>本文作者：Kang</li>
+        <li>创建时间：2021-01-10 17:15:41</li>
+        <li>
+            本文链接：ykhou.github.io2021/01/10/Java基础学习笔记/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/01/10/Hexo-Github-Gitee/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hexo+Github/Gitee</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/01/10/Ubuntu%E4%B8%8BVSCode%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">ubuntu下VSCode无法使用中文</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Kang</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JAVA%E5%AD%A6%E4%B9%A0"><span class="nav-text">JAVA学习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-text">一、基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%B3%A8%E9%87%8A"><span class="nav-text">1、注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-text">2、关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B8%B8%E9%87%8F"><span class="nav-text">3、常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">4、数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%8F%98%E9%87%8F"><span class="nav-text">5、变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="nav-text">6、标识符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-text">7、类型转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">二、运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">1、算术运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">2、赋值运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E8%87%AA%E5%A2%9E%E8%87%AA%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">3、自增自减运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">4、关系运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">5、逻辑运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E4%B8%89%E5%85%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">6、三元运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%95%B0%E6%8D%AE%E8%BE%93%E5%85%A5"><span class="nav-text">三、数据输入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Scanner"><span class="nav-text">1、Scanner</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5"><span class="nav-text">四、分支语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-text">1、流程控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81if%E8%AF%AD%E5%8F%A5"><span class="nav-text">2、if语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81switch%E8%AF%AD%E5%8F%A5"><span class="nav-text">3、switch语句</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-text">五、循环语句</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81for%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-text">1、for循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81while%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-text">2、while循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81do-while%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-text">3、do&#x2F;while循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E4%B8%89%E7%A7%8D%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5"><span class="nav-text">4、三种循环语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E8%B7%B3%E8%BD%AC%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="nav-text">5、跳转控制语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E5%BE%AA%E7%8E%AF%E5%B5%8C%E5%A5%97"><span class="nav-text">6、循环嵌套</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81Random"><span class="nav-text">7、Random</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81IDEA"><span class="nav-text">六、IDEA</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81IDEA%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-text">1、IDEA的使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%BF%AB%E6%8D%B7%E8%AF%AD%E5%8F%A5"><span class="nav-text">2、快捷语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%A8%A1%E5%9D%97"><span class="nav-text">3、模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E6%95%B0%E7%BB%84"><span class="nav-text">七、数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%95%B0%E7%BB%84%E5%AE%9A%E4%B9%89%E6%A0%BC%E5%BC%8F"><span class="nav-text">1、数组定义格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%95%B0%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="nav-text">2、数组初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%95%B0%E7%BB%84%E5%85%83%E7%B4%A0%E8%AE%BF%E9%97%AE"><span class="nav-text">3、数组元素访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D"><span class="nav-text">4、内存分配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-text">5、常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E6%95%B0%E7%BB%84%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C"><span class="nav-text">6、数组常见操作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">八、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0"><span class="nav-text">1、方法概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="nav-text">2、方法的定义和调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B8%A6%E5%8F%82%E6%95%B0%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="nav-text">3、带参数方法的定义和调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%B8%A6%E8%BF%94%E5%9B%9E%E5%80%BC%E6%96%B9%E6%B3%95%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8"><span class="nav-text">4、带返回值方法的定义和调用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E6%96%B9%E6%B3%95%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">5、方法的注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="nav-text">6、方法重载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E5%BD%A2%E5%8F%82%E5%AE%9E%E5%8F%82"><span class="nav-text">7.形参实参</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%9F%BA%E7%A1%80"><span class="nav-text">九、面向对象基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="nav-text">1、类和对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E5%B1%80%E9%83%A8%E5%8F%98%E9%87%8F"><span class="nav-text">2、成员变量和局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B0%81%E8%A3%85"><span class="nav-text">3、封装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95"><span class="nav-text">4、构造方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-text">十、字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81API"><span class="nav-text">1、API</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81String"><span class="nav-text">2、String</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81StringBuilding"><span class="nav-text">3、StringBuilding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81String%E5%92%8CStringBuilder%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2"><span class="nav-text">4、String和StringBuilder互相转换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E9%9B%86%E5%90%88%E5%9F%BA%E7%A1%80"><span class="nav-text">十一、集合基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E9%9B%86%E5%90%88%E6%A6%82%E8%BF%B0"><span class="nav-text">1、集合概述</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E7%BB%A7%E6%89%BF"><span class="nav-text">十二、继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E7%BB%A7%E6%89%BF%E6%A6%82%E8%BF%B0"><span class="nav-text">1、继承概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%A5%BD%E5%A4%84%E5%8F%8A%E5%BC%8A%E7%AB%AF"><span class="nav-text">2、好处及弊端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81super"><span class="nav-text">3、super</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E7%BB%A7%E6%89%BF%E4%B8%AD%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E7%9A%84%E8%AE%BF%E9%97%AE%E7%89%B9%E7%82%B9"><span class="nav-text">4、继承中构造方法的访问特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E7%BB%A7%E6%89%BF%E4%B8%AD%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95%E7%9A%84%E8%AE%BF%E9%97%AE%E7%89%B9%E7%82%B9"><span class="nav-text">5、继承中成员方法的访问特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99"><span class="nav-text">6、方法重写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">7、方法重写的注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81java%E4%B8%AD%E7%BB%A7%E6%89%BF%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">8、java中继承的注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-text">十三、修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%8C%85"><span class="nav-text">1、包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%AF%BC%E5%8C%85"><span class="nav-text">2、导包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-text">3、修饰符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%9D%83%E9%99%90%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-text">1、权限修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E7%8A%B6%E6%80%81%E4%BF%AE%E9%A5%B0%E7%AC%A6"><span class="nav-text">2、状态修饰符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%9B%9B%E3%80%81%E5%A4%9A%E6%80%81"><span class="nav-text">十四、多态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%A4%9A%E6%80%81%E6%A6%82%E8%BF%B0"><span class="nav-text">1、多态概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-text">2、抽象类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%8E%A5%E5%8F%A3"><span class="nav-text">3、接口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%94%E3%80%81%E5%BD%A2%E5%8F%82%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">十五、形参和返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%BD%A2%E5%8F%82%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">1、形参和返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E7%B1%BB%E5%90%8D%E4%BD%9C%E4%B8%BA%E5%BD%A2%E5%8F%82%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">1、类名作为形参和返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%90%8D%E4%BD%9C%E4%B8%BA%E5%BD%A2%E5%8F%82%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">2、抽象类名作为形参和返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%8E%A5%E5%8F%A3%E5%90%8D%E4%BD%9C%E4%B8%BA%E5%BD%A2%E5%8F%82%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-text">3、接口名作为形参和返回值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-text">2、内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%88%90%E5%91%98%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-text">1、成员内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB"><span class="nav-text">2、局部内部类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E5%8C%BF%E5%90%8D%E5%86%85%E9%83%A8%E7%B1%BB-%E5%B1%80%E9%83%A8%E5%86%85%E9%83%A8%E7%B1%BB%E4%B8%80%E7%A7%8D"><span class="nav-text">3、匿名内部类-局部内部类一种</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E5%B8%B8%E7%94%A8API"><span class="nav-text">3、常用API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81MATH"><span class="nav-text">1、MATH</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81System"><span class="nav-text">2、System</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81Object"><span class="nav-text">3、Object</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81Arrays"><span class="nav-text">4、Arrays</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5%E3%80%81%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E5%8C%85%E8%A3%85%E7%B1%BB"><span class="nav-text">5、基本类型包装类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6%E3%80%81%E6%97%A5%E6%9C%9F%E7%B1%BB"><span class="nav-text">6、日期类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1%E3%80%81%E5%9F%BA%E6%9C%AC"><span class="nav-text">1、基本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2%E3%80%81SimpleDateFormat"><span class="nav-text">2、SimpleDateFormat</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3%E3%80%81Calendar"><span class="nav-text">3、Calendar</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E5%BC%82%E5%B8%B8"><span class="nav-text">4、异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81Throwable"><span class="nav-text">1、Throwable</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E5%85%AD%E3%80%81%E9%9B%86%E5%90%88%E8%BF%9B%E9%98%B6"><span class="nav-text">十六、集合进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81Collection"><span class="nav-text">1、Collection</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-text">1、常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E9%81%8D%E5%8E%86"><span class="nav-text">2、遍历</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81List"><span class="nav-text">2、List</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%96%B9%E6%B3%95"><span class="nav-text">1、方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E8%BF%AD%E4%BB%A3%E5%99%A8ListIterator"><span class="nav-text">2、迭代器ListIterator</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E5%A2%9E%E5%BC%BAfor%E5%BE%AA%E7%8E%AF"><span class="nav-text">3、增强for循环</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="nav-text">3、数据结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81list%E9%9B%86%E5%90%88%E5%AD%90%E7%B1%BB"><span class="nav-text">4、list集合子类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81set%E9%9B%86%E5%90%88"><span class="nav-text">5、set集合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81Hash%E5%80%BC"><span class="nav-text">1、Hash值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81HashSet"><span class="nav-text">6、HashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81LinedHashSet"><span class="nav-text">7、LinedHashSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81TreeSet"><span class="nav-text">8、TreeSet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81%E6%B3%9B%E5%9E%8B"><span class="nav-text">9、泛型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%B3%9B%E5%9E%8B%E7%B1%BB"><span class="nav-text">1、泛型类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E6%B3%9B%E5%9E%8B%E6%96%B9%E6%B3%95"><span class="nav-text">2、泛型方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3%E3%80%81%E6%B3%9B%E5%9E%8B%E6%8E%A5%E5%8F%A3"><span class="nav-text">3、泛型接口</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4%E3%80%81%E7%B1%BB%E5%9E%8B%E9%80%9A%E9%85%8D%E7%AC%A6"><span class="nav-text">4、类型通配符</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10%E3%80%81Map-HashMap"><span class="nav-text">10、Map&#x2F;HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%96%B9%E6%B3%95-1"><span class="nav-text">1、方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2%E3%80%81%E9%81%8D%E5%8E%86-1"><span class="nav-text">2、遍历</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11%E3%80%81Collections"><span class="nav-text">11、Collections</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1%E3%80%81%E6%96%B9%E6%B3%95-2"><span class="nav-text">1、方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%83%E3%80%81%E6%96%87%E4%BB%B6%E3%80%81IO%E6%B5%81%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86"><span class="nav-text">十七、文件、IO流数据处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81File%E7%B1%BB"><span class="nav-text">1、File类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-text">递归</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%AD%97%E8%8A%82%E6%B5%81"><span class="nav-text">2、字节流</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E8%B0%83%E5%BA%A6"><span class="nav-text">线程调度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B"><span class="nav-text">网络编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81InetAddress"><span class="nav-text">1、InetAddress</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda"><span class="nav-text">lambda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="nav-text">模块化</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
