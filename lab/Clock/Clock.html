@@ -9,8 +9,6 @@
     
     <title>
         
-            标签: VsCode |
-        
         Kang`Blog
     </title>
     <link rel="stylesheet" href="/css/style.css">
@@ -81,7 +79,7 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class=""
+                            <a class="active"
                                href="/lab/Clock"
                             >
                                 LAB
@@ -119,7 +117,7 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class=""
+                    <a class="active"
                        href="/lab/Clock">LAB</a>
                 </li>
             
@@ -139,49 +137,61 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="tag-container">
-        <div class="tag-name"><i class="fas fa-tag"></i>&nbsp;VsCode
-        </div>
-        <div class="tag-post-list">
-            
-<div class="archive-list-container">
-    
-        <section class="archive-item">
-            <div class="archive-item-header">
-                <span class="archive-year">2021</span>
-                <span class="archive-year-post-count">[2]</span>
-            </div>
-            <ul class="article-list">
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/02/17/VsCode%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF/"
-                        >VsCode以管理员模式运行终端</a>
-                        <span class="article-date">02-17</span>
-                    </li>
-                
-                    <li class="article-item">
-                        <a class="article-title"
-                           href="/2021/01/10/Ubuntu%E4%B8%8BVSCode%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E4%B8%AD%E6%96%87/"
-                        >Ubuntu下VsCode无法使用中文</a>
-                        <span class="article-date">01-10</span>
-                    </li>
-                
-            </ul>
-        </section>
-    
-</div>
+    <div class="empty-page-container">
 
+        
+
+        <div class="empty-page-content markdown-body">
+            
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clock</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="clock">
+                <div class="hour">
+                    <div class="hr" id="hr"></div>
+                </div>
+                <div class="min">
+                    <div class="mn" id="mn"></div>
+                </div>
+                <div class="sec">
+                    <div class="sc" id="sc"></div>
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        const deg = 6;
+        const hr = document.querySelector('#hr');
+        const mn = document.querySelector('#mn');
+        const sc = document.querySelector('#sc');
 
-    <div class="tag-paginator">
-        <div class="paginator">
-    
+        setInterval(() => {
+            let day = new Date();
+            let hh = day.getHours() * 30;
+            let mm = day.getMinutes() * deg;
+            let ss = day.getSeconds() * deg;
 
-    
-</div>
-
+            hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
+            mn.style.transform = `rotateZ(${(mm)}deg)`;
+            sc.style.transform = `rotateZ(${(ss)}deg)`;
+        })
+    </script>
+</body>
+</html>
+            
+        </div>
+        <div class="empty-page-comments">
+            
+        </div>
     </div>
 </div>
 

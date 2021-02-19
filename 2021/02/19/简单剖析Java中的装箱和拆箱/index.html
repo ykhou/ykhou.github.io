@@ -9,6 +9,8 @@
     
     <title>
         
+            简单剖析Java中的装箱和拆箱 |
+        
         Kang`Blog
     </title>
     <link rel="stylesheet" href="/css/style.css">
@@ -79,8 +81,8 @@
                         </li>
                     
                         <li class="menu-item">
-                            <a class="active"
-                               href="/lab/circle"
+                            <a class=""
+                               href="/lab/Clock"
                             >
                                 LAB
                             </a>
@@ -117,8 +119,8 @@
                 </li>
             
                 <li class="drawer-menu-item flex-center">
-                    <a class="active"
-                       href="/lab/circle">LAB</a>
+                    <a class=""
+                       href="/lab/Clock">LAB</a>
                 </li>
             
         </ul>
@@ -137,33 +139,119 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="empty-page-container">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">简单剖析Java中的装箱和拆箱</span>
+        </div>
 
         
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Kang</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-02-19 20:28:28
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java/">Java</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
 
-        <div class="empty-page-content markdown-body">
-            
-                <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" class="css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="circle"></div>
-        <span>circle</span>
-    </div>
-</body>
-</html>
+    
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
             
         </div>
-        <div class="empty-page-comments">
-            
-        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：简单剖析Java中的装箱和拆箱</li>
+        <li>本文作者：Kang</li>
+        <li>创建时间：2021-02-19 20:28:28</li>
+        <li>
+            本文链接：ykhou.github.io2021/02/19/简单剖析Java中的装箱和拆箱/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/02/19/Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Java数据类型</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
     </div>
 </div>
 
@@ -204,6 +292,23 @@
         </div>
     </div>
 
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
     
 
     <div class="right-bottom-side-tools">
@@ -251,6 +356,14 @@
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -274,6 +387,8 @@
 
 
 <div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/toc.js"></script>
     
 </div>
 
