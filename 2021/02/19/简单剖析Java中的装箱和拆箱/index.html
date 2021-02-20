@@ -19,7 +19,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"ykhou.gitee.io","root":"/","language":"zh-CN","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"所念皆星河,星河不可及."},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.0"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"所念皆星河,星河不可及"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.0"};
     KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
   </script>
 <meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Kang`s blog" type="application/atom+xml">
@@ -83,6 +83,14 @@
                     
                         <li class="menu-item">
                             <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
                                href="/lab/Clock"
                             >
                                 LAB
@@ -117,6 +125,11 @@
                 <li class="drawer-menu-item flex-center">
                     <a class=""
                        href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
@@ -190,6 +203,10 @@
 
     
     
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>391 字</span>
+        </span>
+    
     
         <span class="article-min2read article-meta-item">
             <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
@@ -208,7 +225,61 @@
         
 
         <div class="article-content markdown-body">
-            
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>在 Java 的设计中提倡一种思想，即一切皆对象。于是 Java 将基本数据类型封装成对象，每种基本数据类型分别设计了对应的类，称之为包装类（Wrapper Classes）。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">基本数据类型</th>
+<th align="left">包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">byte</td>
+<td align="left">Byte</td>
+</tr>
+<tr>
+<td align="left">short</td>
+<td align="left">Short</td>
+</tr>
+<tr>
+<td align="left">int</td>
+<td align="left">Integer</td>
+</tr>
+<tr>
+<td align="left">long</td>
+<td align="left">Long</td>
+</tr>
+<tr>
+<td align="left">char</td>
+<td align="left">Character</td>
+</tr>
+<tr>
+<td align="left">float</td>
+<td align="left">Float</td>
+</tr>
+<tr>
+<td align="left">double</td>
+<td align="left">Double</td>
+</tr>
+<tr>
+<td align="left">boolean</td>
+<td align="left">Boolean</td>
+</tr>
+</tbody></table>
+<p>将基本数据类型封装成对象就可以在对象中定义更多的功能方法操作</p>
+<h2 id="拆箱与装箱"><a href="#拆箱与装箱" class="headerlink" title="拆箱与装箱"></a>拆箱与装箱</h2><p>那什么是拆箱？什么是装箱呢？</p>
+<ul>
+<li>装箱：把基本数据类型转换为对应的包装类类型</li>
+<li>拆箱：把包装类类型转换成对应的基本数据类型</li>
+</ul>
+<p>Java 1.5 版本之后可以自动拆箱装箱，也就是在进行基本数据类型和对应的包装类转换时，系统将自动进行装箱及拆箱操作，不用在进行手工操作，为开发者提供了更多的方便。例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer obj = <span class="number">123</span>; <span class="comment">// 自动装箱</span></span><br><span class="line"><span class="keyword">int</span> i = obj; <span class="comment">// 自动拆箱</span></span><br></pre></td></tr></table></figure>
+<p>自动装箱，相当于Java编译器替我们执行了 <code>Integer.valueOf(XXX)</code>;<br>自动拆箱，相当于Java编译器替我们执行了 <code>Integer.intValue(XXX)</code>;</p>
+<h2 id="包装类的应用"><a href="#包装类的应用" class="headerlink" title="包装类的应用"></a>包装类的应用</h2><h3 id="int和Integer相互转换"><a href="#int和Integer相互转换" class="headerlink" title="int和Integer相互转换"></a>int和Integer相互转换</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Integer obj = <span class="keyword">new</span> Integer(<span class="number">50</span>); <span class="comment">// 手动装箱</span></span><br><span class="line"><span class="keyword">int</span> n = obj.intValue(); <span class="comment">// 手动拆箱</span></span><br></pre></td></tr></table></figure>
+<h3 id="数值类型转为字符串类型"><a href="#数值类型转为字符串类型" class="headerlink" title="数值类型转为字符串类型"></a>数值类型转为字符串类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// int -&gt; string</span></span><br><span class="line"><span class="keyword">int</span> number = <span class="number">10</span>;</span><br><span class="line">String s1 = <span class="string">&quot;&quot;</span> + number;</span><br><span class="line"></span><br><span class="line">String s2 = String.valueOf(number);</span><br><span class="line"></span><br><span class="line">String s3 = Integer.toString(number);</span><br></pre></td></tr></table></figure>
+<h3 id="字符串转为数值类型"><a href="#字符串转为数值类型" class="headerlink" title="字符串转为数值类型"></a>字符串转为数值类型</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// string -&gt; int</span></span><br><span class="line">String s = <span class="string">&quot;10&quot;</span>;</span><br><span class="line">Integer i = Integer.valueOf(s);</span><br><span class="line"><span class="keyword">int</span> x1 = i.intValue();</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x2 = Integer.parseInt(s);</span><br></pre></td></tr></table></figure>
         </div>
 
         
@@ -360,7 +431,7 @@
             <aside class="page-aside">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8B%86%E7%AE%B1%E4%B8%8E%E8%A3%85%E7%AE%B1"><span class="nav-text">拆箱与装箱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8C%85%E8%A3%85%E7%B1%BB%E7%9A%84%E5%BA%94%E7%94%A8"><span class="nav-text">包装类的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#int%E5%92%8CInteger%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2"><span class="nav-text">int和Integer相互转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E8%BD%AC%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B"><span class="nav-text">数值类型转为字符串类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E4%B8%BA%E6%95%B0%E5%80%BC%E7%B1%BB%E5%9E%8B"><span class="nav-text">字符串转为数值类型</span></a></li></ol></li></ol>
     </div>
 </div>
             </aside>
