@@ -6,7 +6,7 @@
   <link href="http://ykhou.gitee.io/atom.xml" rel="self"/>
   
   <link href="http://ykhou.gitee.io/"/>
-  <updated>2021-02-28T08:12:54.629Z</updated>
+  <updated>2021-02-28T10:00:42.308Z</updated>
   <id>http://ykhou.gitee.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lambda表达式</title>
+    <link href="http://ykhou.gitee.io/2021/02/28/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    <id>http://ykhou.gitee.io/2021/02/28/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
+    <published>2021-02-28T09:59:51.000Z</published>
+    <updated>2021-02-28T10:00:42.308Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Lambda表达式</p></blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> lambda;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LambdaTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3.静态内部类</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Like2</span> <span class="keyword">implements</span> <span class="title">Ilike</span> </span>&#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lambda</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;I like lambda2&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Ilike like = <span class="keyword">new</span> Like();</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        like = <span class="keyword">new</span> Like2();</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.局部内部类</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Like3</span> <span class="keyword">implements</span> <span class="title">Ilike</span> </span>&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lambda</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;I like lambda3&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        like = <span class="keyword">new</span> Like3();</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 5.匿名内部类</span></span><br><span class="line">        like = <span class="keyword">new</span> Ilike() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lambda</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">&quot;I like lambda4&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        like.lambda();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 6.用lambda简化</span></span><br><span class="line">        like = ()-&gt;&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;I like lambda5&quot;</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">        like.lambda();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1.定义一个函数式接口</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Ilike</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">lambda</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.实现类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Like</span> <span class="keyword">implements</span> <span class="title">Ilike</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">lambda</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;I like lambda&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;Lambda表达式&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br</summary>
+      
+    
+    
+    
+    <category term="学习笔记" scheme="http://ykhou.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="Java" scheme="http://ykhou.gitee.io/tags/Java/"/>
+    
+    <category term="Lambda" scheme="http://ykhou.gitee.io/tags/Lambda/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ClassLoader</title>
+    <link href="http://ykhou.gitee.io/2021/02/28/ClassLoader/"/>
+    <id>http://ykhou.gitee.io/2021/02/28/ClassLoader/</id>
+    <published>2021-02-28T09:24:15.000Z</published>
+    <updated>2021-02-28T09:25:51.095Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、类加载过程"><a href="#一、类加载过程" class="headerlink" title="一、类加载过程"></a>一、类加载过程</h2><p>Class文件需要加载到虚拟机中之后才能运行和使用。</p><p>包括主要三步：加载-&gt;链接-&gt;初始化，链接过程又包括三步：验证-&gt;准备-&gt;解析。</p><p><img src="./source/ClassLoader/Java%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B.png" alt="Java类加载过程"></p><h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><blockquote><p>将class字节码文件加载到内存中，并将这些数据转换成方法区中的运行时数据（静态变量、静态代码块、常量池等），在堆中生成一个Class类对象代表这个类（反射原理），作为方法区类数据的访问入口。</p></blockquote><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><h4 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h4><blockquote><p>目的在于确保Class文件的字节流中包含信息符合当前虚拟机要求，不会危害虚拟机自身安全。主要包括四种验证，文件格式验证，元数据验证，字节码验证，符号引用验证。</p></blockquote><h4 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h4><blockquote><p>正式为类变量(static)分配内存并设置类变量默认初始值的阶段，这些内存都将在方法区中进行分配</p></blockquote><h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><blockquote><p>虚拟机常量池内的符号引用(常量名)替换为直接引用(地址)的过程</p></blockquote><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><blockquote><ul><li>执行类构造器&lt; clinit &gt;()方法的过程，将所有类变量的赋值动作和静态代码块的语句运行</li><li>初始化一个类时，如果其父类还没有初始化，则先触发其父类的初始化</li><li>虚拟机会保证一个类的&lt; clinit &gt;()方法在多线程环境中被正确加锁和同步</li></ul></blockquote><h2 id="二、类加载器"><a href="#二、类加载器" class="headerlink" title="二、类加载器"></a>二、类加载器</h2><ol><li>启动（Bootstrap）类加载器或根加载器<ul><li>启动类加载器主要加载的是JVM自身需要的类，这个类加载使用C++语言实现的，是虚拟机自身的一部分，它负责将 &lt; JAVA_HOME &gt;/lib路径下的核心类库或-Xbootclasspath参数指定的路径下的jar包加载到内存中，注意必由于虚拟机是按照文件名识别加载jar包的，如rt.jar，如果文件名不被虚拟机识别，即使把jar包丢到lib目录下也是没有作用的(出于安全考虑，Bootstrap启动类加载器只加载包名为java、javax、sun等开头的类)。</li></ul></li><li>扩展（Extension）类加载器<ul><li>扩展类加载器是指Sun公司(已被Oracle收购)实现的sun.misc.Launcher$ExtClassLoader类，由Java语言实现的，是Launcher的静态内部类，它负责加载&lt; JAVA_HOME &gt;/lib/ext目录下或者由系统变量-Djava.ext.dir指定位路径中的类库，开发者可以直接使用标准扩展类加载器。</li></ul></li><li>应用程序加载器<ul><li>也称应用程序加载器是指 Sun公司实现的sun.misc.Launcher$AppClassLoader。它负责加载系统类路径java -classpath或-D java.class.path 指定路径下的类库，也就是我们经常用到的classpath路径，开发者可以直接使用系统类加载器，一般情况下该类加载是程序中默认的类加载器，通过ClassLoader#getSystemClassLoader()方法可以获取到该类加载器。</li></ul></li></ol><h2 id="三、双亲委派机制"><a href="#三、双亲委派机制" class="headerlink" title="三、双亲委派机制"></a>三、双亲委派机制</h2><blockquote><p>某个特定的类加载器在接到加载类的请求时，首先将加载任务委托给父类加载器，依次递归，如果父类加载器可以完成类加载任务，就成功返回；只有父类加载器无法完成此加载任务时，才自己去加载。</p></blockquote><p><img src="./source/ClassLoader/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6.png" alt="双亲委派机制"></p><p>AppClassLoader的父类加载器为ExtClassLoader ExtClassLoader的父类加载器为null，null并不代表ExtClassLoader没有父类加载器，而是 BootstrapClassLoader 。因为java底层是由C语音编写的，所以返回为null。</p>]]></content>
+    
+    
+    <summary type="html">类加载过程以及双亲委派机制</summary>
+    
+    
+    
+    <category term="学习笔记" scheme="http://ykhou.gitee.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="JVM" scheme="http://ykhou.gitee.io/tags/JVM/"/>
+    
+    <category term="Java" scheme="http://ykhou.gitee.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>垃圾回收机制</title>
