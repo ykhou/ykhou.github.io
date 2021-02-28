@@ -168,7 +168,7 @@
                     <div class="author">
                         <span class="name">Kang</span>
                         
-                            <span class="author-label">Lv1</span>
+                            <span class="author-label">Lv2</span>
                         
                     </div>
                     <div class="meta-info">
@@ -225,8 +225,8 @@
         
 
         <div class="article-content markdown-body">
-            <h3 id="1、JVM位置"><a href="#1、JVM位置" class="headerlink" title="1、JVM位置"></a>1、JVM位置</h3><p><img src="resources/pictures/JVM%E5%AD%A6%E4%B9%A0/JVM%E4%BD%8D%E7%BD%AE.png" alt="JVM位置"></p>
-<h3 id="2、JVM的体系结构"><a href="#2、JVM的体系结构" class="headerlink" title="2、JVM的体系结构"></a>2、JVM的体系结构</h3><p><img src="resources/pictures/JVM%E5%AD%A6%E4%B9%A0/JVM%E7%BB%93%E6%9E%84.png" alt="JVM体系结构"></p>
+            <h3 id="1、JVM位置"><a href="#1、JVM位置" class="headerlink" title="1、JVM位置"></a>1、JVM位置</h3><p><img src="./source/JVM%E5%AD%A6%E4%B9%A0/JVM%E4%BD%8D%E7%BD%AE.png" alt="JVM位置"></p>
+<h3 id="2、JVM的体系结构"><a href="#2、JVM的体系结构" class="headerlink" title="2、JVM的体系结构"></a>2、JVM的体系结构</h3><p><img src="./source/JVM%E5%AD%A6%E4%B9%A0/JVM%E7%BB%93%E6%9E%84.png" alt="JVM体系结构"></p>
 <h3 id="3、类加载器"><a href="#3、类加载器" class="headerlink" title="3、类加载器"></a>3、类加载器</h3><p>类加载过程：</p>
 <ol>
 <li>加载<ul>
@@ -298,7 +298,7 @@
 <p>栈：栈内存，主管程序的运行，生命周期和线程同步。线程结束，栈内存也就释放了，对于栈来说 不存在垃圾回收问题 一旦线程结束 栈就over</p>
 <p>栈里压的东西：8大基本类型、对象引用、实例的方法</p>
 <p>栈运行的原理：栈帧</p>
-<p><img src="resources/pictures/JVM%E5%AD%A6%E4%B9%A0/%E6%A0%88%E3%80%81%E5%A0%86%E5%92%8C%E6%96%B9%E6%B3%95%E5%8C%BA.png" alt="栈、堆和方法区"></p>
+<p><img src="./source/JVM%E5%AD%A6%E4%B9%A0/%E6%A0%88%E3%80%81%E5%A0%86%E5%92%8C%E6%96%B9%E6%B3%95%E5%8C%BA.png" alt="栈、堆和方法区"></p>
 <h3 id="9、三种JVM"><a href="#9、三种JVM" class="headerlink" title="9、三种JVM"></a>9、三种JVM</h3><ul>
 <li>Sun公司 HotSpot</li>
 <li>BEA公司 JRockit</li>
@@ -313,7 +313,7 @@
 <li>永久区 Perm</li>
 </ul>
 <p>GC垃圾回收主要在伊甸园区和养老区<br>堆内存满了会报出OOM（OutOfMemoryError：java heap space）错误，堆内存不够。</p>
-<p><img src="resources/pictures/JVM%E5%AD%A6%E4%B9%A0/%E5%A0%86.png" alt="堆"></p>
+<p><img src="./source/JVM%E5%AD%A6%E4%B9%A0/%E5%A0%86.png" alt="堆"></p>
 <p>在JDK8以后，永久存储区改了名字 叫元空间,元空间逻辑上存在，但物理上可能并不存在。</p>
 <h4 id="新生区-Eden-、老年区-Old"><a href="#新生区-Eden-、老年区-Old" class="headerlink" title="新生区(Eden)、老年区(Old)"></a>新生区(Eden)、老年区(Old)</h4><p>新生区包括伊甸园区和幸存者区<br>伊甸园区，所有的对象都是在伊甸园区new出来的。当伊甸园区装满就会进行一次轻GC。假设该对象在GC垃圾回收中能存活下来一次 就进入幸存者区<br>幸存者区（from,to）：当幸存者区装满 就会触发重GC 存活下来的进入养老区。幸存者区是动态的，from,to区域会互换</p>
 <p>经过研究，99%的对象都是临时对象，不会走到养老区。</p>
@@ -321,7 +321,7 @@
 <p>一个启动类加载了大量的第三方jar包，或者tomcat部署了太多的应用，或者大量的动态生成的反射类。就会导致永久区内存被装满，就会产生OOM。</p>
 <p>方法区存在于永久区内（也叫非堆（只是个名词，其实也是堆））</p>
 <p>JDK1.6之前：永久代，常量池是在方法区<br>JDK1.7：永久代，但是慢慢退化了（去永久代），常量池在堆中<br>JDK1.8之后：无永久代，常量池在元空间</p>
-<p><img src="resources/pictures/JVM%E5%AD%A6%E4%B9%A0/%E5%A0%862.png" alt="堆2"></p>
+<p><img src="./source/JVM%E5%AD%A6%E4%B9%A0/%E5%A0%862.png" alt="堆2"></p>
 <h3 id="11、GC-垃圾回收机制"><a href="#11、GC-垃圾回收机制" class="headerlink" title="11、GC(垃圾回收机制)"></a>11、GC(垃圾回收机制)</h3><blockquote>
 <p>作用区:堆(堆和方法区)</p>
 </blockquote>
@@ -361,6 +361,21 @@
 
         
             <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/02/28/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">垃圾回收机制</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
                 
                 
                     <div class="article-next">
