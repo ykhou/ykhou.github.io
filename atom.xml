@@ -6,7 +6,7 @@
   <link href="http://ykhou.gitee.io/atom.xml" rel="self"/>
   
   <link href="http://ykhou.gitee.io/"/>
-  <updated>2021-03-09T12:07:53.896Z</updated>
+  <updated>2021-03-10T08:39:53.571Z</updated>
   <id>http://ykhou.gitee.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>github相关问题</title>
+    <link href="http://ykhou.gitee.io/2021/03/10/%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8Agithub/"/>
+    <id>http://ykhou.gitee.io/2021/03/10/%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8Agithub/</id>
+    <published>2021-03-10T07:47:27.000Z</published>
+    <updated>2021-03-10T08:39:53.571Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、打不开github或打开速度慢"><a href="#一、打不开github或打开速度慢" class="headerlink" title="一、打不开github或打开速度慢"></a>一、打不开github或打开速度慢</h2><p>这几天不知道什么原因突然打不开github了，ping了一下居然没有ping通，就上网百度了一下。</p><ol><li>打开 &lt;ipaddress.com&gt; ,查询如下两个域名，并分别记录下其对应的ip<ul><li>github.com</li><li>github.global.ssl.fastly.net</li></ul></li></ol><p><img src="/2021/03/10/%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8Agithub/IPAddress.png" alt="IPAdress"></p><ol start="2"><li>修改C:\Windows\System32\drivers\etc中的hosts文件<ul><li><code>140.82.112.3 github.com</code></li><li><code>199.232.69.194 github.global.ssl.fastly.net</code></li></ul></li></ol><p><img src="/2021/03/10/%E8%BF%9E%E6%8E%A5%E4%B8%8D%E4%B8%8Agithub/hosts.png" alt="hosts"></p><ol start="3"><li>清理一下DNS<ul><li><code>ipconfig /flushdns</code></li></ul></li></ol><h2 id="二、git推送到github失败"><a href="#二、git推送到github失败" class="headerlink" title="二、git推送到github失败"></a>二、git推送到github失败</h2><p>在VSCode中推送代码时，遇到了下面的问题，timed out，查询后发现是使用VPN，设置了代理的原因。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to connect to github.com port 443: Timed out</span><br></pre></td></tr></table></figure><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><ol><li>首先关闭VPN，等几分钟，然后再推送一次，看一下是否成功。</li><li>如果上一步失败的话，查看git代理<ul><li><code>git config --global http.proxy</code></li><li><code>git config --global https.proxy</code></li></ul></li><li>如果有返回信息，则取消代理<ul><li><code>git config --global --unset http.proxy</code></li><li><code>git config --global --unset http.proxy</code></li></ul></li></ol><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><ol><li>将代理端口改成自己VPN的代理端口，如我的是10808，大家一定要改成自己的端口<ul><li><code>git config --global http.proxy 127.0.0.1:10808</code></li><li><code>git config --global https.proxy 127.0.0.1:10808</code></li></ul></li></ol>]]></content>
+    
+    
+    <summary type="html">打不开github或推送到github失败</summary>
+    
+    
+    
+    <category term="default" scheme="http://ykhou.gitee.io/categories/default/"/>
+    
+    
+    <category term="default" scheme="http://ykhou.gitee.io/tags/default/"/>
+    
+  </entry>
   
   <entry>
     <title>InsertionSort</title>
