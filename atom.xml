@@ -6,7 +6,7 @@
   <link href="http://ykhou.gitee.io/atom.xml" rel="self"/>
   
   <link href="http://ykhou.gitee.io/"/>
-  <updated>2021-03-10T13:27:08.403Z</updated>
+  <updated>2021-03-11T13:24:12.273Z</updated>
   <id>http://ykhou.gitee.io/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CountingSort</title>
+    <link href="http://ykhou.gitee.io/2021/03/11/CountingSort/"/>
+    <id>http://ykhou.gitee.io/2021/03/11/CountingSort/</id>
+    <published>2021-03-11T12:43:01.000Z</published>
+    <updated>2021-03-11T13:24:12.273Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="算法思路及原理"><a href="#算法思路及原理" class="headerlink" title="算法思路及原理"></a>算法思路及原理</h2><blockquote><ol><li>扫描整个集合arr，对每一个arr中的元素，在线性表count中存储对应的数量；</li><li>扫描整个线性表count，对count中记录的每一个元素，按顺序放到对应位置，并将count对应元素数量减1。</li></ol></blockquote><h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>O(N+K)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>需要额外的储存count的空间K，和储存重新排序好的arr的temp空间N，即O(n+k)</p><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>优化前因为不能确定相同元素的位置，所以不稳定。优化后稳定</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; count.length; i++) &#123;</span><br><span class="line">    count[i] = count[i] + count[i-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(Arrays.toString(count));</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>[] temp = <span class="keyword">new</span> <span class="keyword">int</span>[arr.length];</span><br><span class="line"><span class="comment">// 由后向前按顺序将对应的元素赋值给temp中，所以相同元素的前后顺序不变</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = arr.length-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">    temp[--count[arr[i]]] = arr[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import java.util.Arrays;</span><br><span class="line"></span><br><span class="line">public class CountingSort2 &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr &#x3D; &#123;2, 4, 3, 6, 2, 7, 1, 3, 5&#125;;</span><br><span class="line">        sort(arr, 1, 7); &#x2F;&#x2F; 最小为1，最大为7</span><br><span class="line">    &#125;</span><br><span class="line">    static void sort(int[] arr, int start, int end) &#123;</span><br><span class="line">        int[] count &#x3D; new int[end - start + 1];</span><br><span class="line">        for (int value : arr) &#123;</span><br><span class="line">            count[value - start]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 1; i &lt; count.length; i++) &#123;</span><br><span class="line">            count[i] &#x3D; count[i] + count[i-1];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int[] temp &#x3D; new int[arr.length];</span><br><span class="line">        for (int i &#x3D; arr.length-1; i &gt;&#x3D; 0; i--) &#123;</span><br><span class="line">            temp[--count[arr[i]-start]] &#x3D; arr[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (int i &#x3D; 0; i &lt; arr.length; i++) &#123;</span><br><span class="line">            arr[i] &#x3D; temp[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    static void printArr(int[] arr) &#123;</span><br><span class="line">        for (int i : arr) &#123;</span><br><span class="line">            System.out.print(i+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;算法思路及原理&quot;&gt;&lt;a href=&quot;#算法思路及原理&quot; class=&quot;headerlink&quot; title=&quot;算法思路及原理&quot;&gt;&lt;/a&gt;算法思路及原理&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;扫描整个集合arr，对每一个arr中的元素，在线性表count</summary>
+      
+    
+    
+    
+    <category term="算法" scheme="http://ykhou.gitee.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="计数排序" scheme="http://ykhou.gitee.io/tags/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>QuickSort</title>
+    <link href="http://ykhou.gitee.io/2021/03/11/QuickSort/"/>
+    <id>http://ykhou.gitee.io/2021/03/11/QuickSort/</id>
+    <published>2021-03-11T08:00:46.000Z</published>
+    <updated>2021-03-11T08:15:49.844Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="算法思路及原理"><a href="#算法思路及原理" class="headerlink" title="算法思路及原理"></a>算法思路及原理</h2><blockquote><ol><li>首先设定一个分界值，通过该分界值将数组分成左右两部分。</li><li>将大于分界值的数据集中到数组右边，小于或等于分界值的数据集中到数组的左边。此时，左边部分中各元素都小于或等于分界值，而右边部分中各元素都大于分界值。</li><li>然后，左边和右边的数据可以独立排序。对于左侧的数组数据，又可以取一个分界值，将该部分数据分成左右两部分，同样在左边放置较小值，右边放置较大值。右侧的数组数据也可以做类似处理。</li><li>重复上述过程，可以看出，这是一个递归定义。通过递归将左侧部分排好序后，再递归排好右侧部分的顺序。当左、右两个部分各数据排序完成后，整个数组的排序也就完成了。</li></ol></blockquote><h2 id="算法分析"><a href="#算法分析" class="headerlink" title="算法分析"></a>算法分析</h2><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>序列每次都要分成两部分进行排序，共需要要logN次，而每一行需要N次排序，所以时间复杂度为N(logN)，即O(NlogN)</p><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><p>需要额外的空间logN，O(N)。</p><h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h3><p>不稳定</p><h2 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class QuickSort &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        int[] arr &#x3D; &#123;1,3,7,6,2,5,4&#125;;</span><br><span class="line">        sort(arr, 0, arr.length-1);</span><br><span class="line">        printArr(arr);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void sort(int[] arr, int leftBound, int rightBound) &#123;</span><br><span class="line">        if (leftBound &gt;&#x3D; rightBound) return;</span><br><span class="line">        int mid &#x3D; partition(arr, leftBound, rightBound);</span><br><span class="line">        sort(arr, leftBound ,mid-1);</span><br><span class="line">        sort(arr, mid+1, rightBound);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static int partition(int[] arr, int leftBound, int rightBound) &#123;</span><br><span class="line">        int pivot &#x3D; arr[rightBound];</span><br><span class="line">        int left &#x3D; leftBound;</span><br><span class="line">        int right &#x3D; rightBound - 1;</span><br><span class="line"></span><br><span class="line">        while (left &lt;&#x3D; right) &#123;</span><br><span class="line">            if (left &lt;&#x3D; right &amp;&amp; arr[left] &lt;&#x3D; pivot) left++;</span><br><span class="line">            if (left &lt;&#x3D; right &amp;&amp; arr[right] &gt; pivot) right--;</span><br><span class="line">            if (left &lt; right) swap(arr, left, right);</span><br><span class="line">        &#125;</span><br><span class="line">        swap(arr, left, rightBound);</span><br><span class="line">        return left;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void swap(int[] arr, int i, int j) &#123;</span><br><span class="line">        int temp &#x3D; arr[i];</span><br><span class="line">        arr[i] &#x3D; arr[j];</span><br><span class="line">        arr[j] &#x3D; temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void printArr(int[] arr) &#123;</span><br><span class="line">        for (int i : arr) &#123;</span><br><span class="line">            System.out.print(i+&quot; &quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;算法思路及原理&quot;&gt;&lt;a href=&quot;#算法思路及原理&quot; class=&quot;headerlink&quot; title=&quot;算法思路及原理&quot;&gt;&lt;/a&gt;算法思路及原理&lt;/h2&gt;&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;首先设定一个分界值，通过该分界值将数组分成左右两部分。&lt;/li</summary>
+      
+    
+    
+    
+    <category term="算法" scheme="http://ykhou.gitee.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="快速算法" scheme="http://ykhou.gitee.io/tags/%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>MergeSort</title>
