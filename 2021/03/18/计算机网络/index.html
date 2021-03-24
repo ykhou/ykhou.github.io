@@ -204,12 +204,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>2.8k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>3.5k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>9 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>12 分钟</span>
         </span>
     
     
@@ -277,7 +277,7 @@
 <li>如果不存在，RARP服务器对此不做任何的响应。</li>
 </ol>
 <h3 id="传输层-Transport-Layer"><a href="#传输层-Transport-Layer" class="headerlink" title="传输层(Transport Layer)"></a>传输层(Transport Layer)</h3><ul>
-<li>传输层负责将上层数据分段并提供端到端的7可靠或不可靠的传输以及端到端的差错控制和流量控制</li>
+<li>传输层负责将上层数据分段并提供端到端的可靠或不可靠的传输以及端到端的差错控制和流量控制</li>
 <li>主要协议<ul>
 <li>TCP协议</li>
 <li>UDP协议</li>
@@ -303,19 +303,48 @@
 </li>
 </ol>
 <p><img src="/2021/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/TCP%E6%95%B0%E6%8D%AE%E6%8A%A5.png" alt="TCP数据报"></p>
-<ul>
-<li>TCP三次握手（三次握手完成，TCP客户端和服务器成功建立连接）<ol>
+<h5 id="TCP三次握手（三次握手完成，TCP客户端和服务器成功建立连接）"><a href="#TCP三次握手（三次握手完成，TCP客户端和服务器成功建立连接）" class="headerlink" title="TCP三次握手（三次握手完成，TCP客户端和服务器成功建立连接）"></a>TCP三次握手（三次握手完成，TCP客户端和服务器成功建立连接）</h5><ol>
 <li>客户端发送SYN(SEQ=x)报文给服务端，进入SYN_SEND状态。</li>
 <li>服务器端收到SYN报文，回复一个SYN(SEQ=y)ACK(ACK=x+1)报文，进入SYN_RECV状态。</li>
 <li>客户端收到服务器端的SYN报文，回应一个ACK(ACK=y+1)报文，进入Established状态。</li>
 </ol>
+<ul>
+<li><p>简述：我连你，你同意，我再连你</p>
 </li>
-<li>四次握手（连接终止）<ol>
-<li>某个应用进程首先调用close，称该端执行“主动关闭”(active close)，该端的TCP发送一个FIN分节，表示数据发送完毕。</li>
-<li>接收到这个FIN的对端执行“被动关闭”(passive close)，这个FIN由TCP确认。<br>注意：FIN的接收也作为一个文件结束符（end-of-file）传递给接收端应用进程，放在已排队等候该应用进程接收的任何其他数据之后，因为，FIN的接收意味着接收端应用进程在相应连接上再无额外数据可接收。</li>
-<li>一段时间后，接收到这个文件结束符的应用进程将调用close关闭它的套接字。</li>
-<li>接收这个最终FIN的原发送端TCP(即执行主动关闭的那一端)确认这个FIN。</li>
+<li><p>为什么要三次握手？</p>
+<ul>
+<li>为了防止已失效的连接请求报文突然又传到了服务端，产生错误。同时保证发送双方的消息发送与接收功能都可用。</li>
+<li>如：C端发送SYN报文给S端，但报文在某个网络节点发生滞留，导致连接被释放。一段时间后S端才收到报文，给C端发送SYN+ACK报文，这时无法得到C端的回应，因为连接已无效。</li>
+</ul>
+</li>
+</ul>
+<h5 id="TCP四次挥手（连接终止）"><a href="#TCP四次挥手（连接终止）" class="headerlink" title="TCP四次挥手（连接终止）"></a>TCP四次挥手（连接终止）</h5><ol>
+<li>某个应用进程首先调用close，称A端执行“主动关闭”(active close)，A端的给B端发送一个FIN报文(SYN=x)，表示数据发送完毕。</li>
+<li>接收到这个FIN的B端执行“被动关闭”(passive close)，给A发送ACK报文(ACK=x+1)，B同意A关闭请求。<br>注意：FIN的接收也作为一个文件结束符（end-of-file）传递给接收端应用进程，放在已排队等候该应用进程接收的任何其他数据之后，因为，FIN的接收意味着接收端应用进程在相应连接上再无额外数据可接收。</li>
+<li>B向A发送FIN报文(SYN=y)，请求关闭连接，B进入LAST_ACK状态。</li>
+<li>A端收到FIN报文，向B发送ACK(ACK=y+1)，A进入TIME_WAIT，B收到ACK报文后关闭连接，A在2MSL后依旧没有收到回复，证明B已关闭，A就可以关闭连接了。</li>
 </ol>
+<ul>
+<li><p>我要关闭，你同意，你要关闭，我同意。你先关闭，我再关闭。</p>
+</li>
+<li><p>为什么要四次挥手</p>
+<ul>
+<li>TCP协议是一种面向连接的、可靠的、基于字节流的运输层通信协议</li>
+<li>TCP是全双工模式，主机1请求关闭连接，不再发送数据了，但是还可以接收主机2的数据，只有主机2不再发送数据了，才算关闭，这样减小了丢失数据的风险。</li>
+</ul>
+</li>
+<li><p>TIME_WAIT和CLOSE_TIME原因</p>
+<ul>
+<li>我们没有任何机制保证最后的一个ACK能够正常传输</li>
+<li>网络上仍然有可能有残余的数据包(wandering duplicates)，我们也必须能够正常处理。</li>
+</ul>
+</li>
+<li><p>TCP滑动窗口</p>
+<ul>
+<li>TCP滑动窗口具有拥塞控制和保证可靠性的功能</li>
+<li>对于拥塞控制，滑动窗口是可变大小的，如果滑动窗口发生拥塞控制，则将窗口大小置为1，然后对长度进行2的指数增长，直到窗口大小可满足数据传输或者大小达到阈值</li>
+<li>对于可靠性，接收双方具有同样大小的窗口，然后对数据进行编号，如果接收端没有收到某部分信息就会发送请求给发送方，然后重新发送未接收到的部分。</li>
+</ul>
 </li>
 </ul>
 <p>使用TCP的协议：FTP（文件传输协议）、Telnet（远程登录协议）、SMTP（简单邮件传输协议）、POP3（和SMTP相对，用于接收邮件）、HTTP协议等。</p>
@@ -368,7 +397,31 @@
 <li>服务器接受请求，并根据请求返回相应的文件作为应答；</li>
 <li>客户与服务器关闭连接。</li>
 </ol>
+<h5 id="HTTP常见请求"><a href="#HTTP常见请求" class="headerlink" title="HTTP常见请求"></a>HTTP常见请求</h5><ul>
+<li>Get请求指定页面</li>
+<li>Head获取报头</li>
+<li>Post请求给服务器添加信息(如注释)</li>
+<li>Put修改资源</li>
+<li>Delete删除资源</li>
+<li>Options获取服务器性能</li>
+</ul>
+<h5 id="HTTP常见状态码"><a href="#HTTP常见状态码" class="headerlink" title="HTTP常见状态码"></a>HTTP常见状态码</h5><ul>
+<li>1xx 信息，服务器收到请求，需要请求者继续执行操作</li>
+<li>2xx 成功，操作被成功接收并处理</li>
+<li>3xx 重定向，需要进一步的操作以完成请求</li>
+<li>4xx 客户端错误，请求包括语法错误或无法完成请求</li>
+<li>5xx 服务器错误，服务器在处理请求的过程中发生了错误</li>
+</ul>
+<h5 id="HTTP和HTTPS"><a href="#HTTP和HTTPS" class="headerlink" title="HTTP和HTTPS"></a>HTTP和HTTPS</h5><p>HTTP使用80端口，HTTPS使用443端口，其中HTTPS是由SSL+HTTP协议构建的可进行加密传输，身份认证的网络协议。SSL是安全套接层在传输层</p>
 <h3 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h3><p>常见的路由选择协议有：RIP协议、OSPF协议。<br>RIP协议：底层是贝尔曼福特算法，它选择路由的度量标准是跳数，最大跳是15跳，如果大于15跳，就会丢弃数据包。<br>OSPF协议：Open Shortest Path First开放式最短路径优先，底层是迪杰斯特拉算法，是链路状态路由选择协议，它选择路由的度量标准是带宽，延迟。</p>
+<h3 id="当打开一个浏览器输入url到请求到页面的过程"><a href="#当打开一个浏览器输入url到请求到页面的过程" class="headerlink" title="当打开一个浏览器输入url到请求到页面的过程"></a>当打开一个浏览器输入url到请求到页面的过程</h3><ol>
+<li>DNS解析，将域名转化为IP地址</li>
+<li>TCP连接，与服务器建立连接</li>
+<li>发送HTTP请求</li>
+<li>服务器处理请求并返回HTTP报文</li>
+<li>浏览器解析渲染页面</li>
+<li>连接结束</li>
+</ol>
 
         </div>
 
@@ -521,7 +574,7 @@
             <aside class="page-aside">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82-Physical-Layer"><span class="nav-text">物理层(Physical Layer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82-Data-Link-Layer"><span class="nav-text">数据链路层(Data Link Layer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82-Network-Layer"><span class="nav-text">网络层(Network Layer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RARP%E5%8D%8F%E8%AE%AE"><span class="nav-text">RARP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82-Transport-Layer"><span class="nav-text">传输层(Transport Layer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%8D%8F%E8%AE%AE"><span class="nav-text">TCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP%E5%8D%8F%E8%AE%AE"><span class="nav-text">UDP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%E5%8D%8F%E8%AE%AE"><span class="nav-text">DNS协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAT%E5%8D%8F%E8%AE%AE"><span class="nav-text">NAT协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP%E5%8D%8F%E8%AE%AE"><span class="nav-text">DHCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-text">HTTP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-text">路由选择协议</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-text">网络模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%A9%E7%90%86%E5%B1%82-Physical-Layer"><span class="nav-text">物理层(Physical Layer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82-Data-Link-Layer"><span class="nav-text">数据链路层(Data Link Layer)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82-Network-Layer"><span class="nav-text">网络层(Network Layer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ARP%E5%8D%8F%E8%AE%AE"><span class="nav-text">ARP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#RARP%E5%8D%8F%E8%AE%AE"><span class="nav-text">RARP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E5%B1%82-Transport-Layer"><span class="nav-text">传输层(Transport Layer)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#TCP%E5%8D%8F%E8%AE%AE"><span class="nav-text">TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%EF%BC%88%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B%E5%AE%8C%E6%88%90%EF%BC%8CTCP%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%92%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%88%90%E5%8A%9F%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="nav-text">TCP三次握手（三次握手完成，TCP客户端和服务器成功建立连接）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#TCP%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B%EF%BC%88%E8%BF%9E%E6%8E%A5%E7%BB%88%E6%AD%A2%EF%BC%89"><span class="nav-text">TCP四次挥手（连接终止）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#UDP%E5%8D%8F%E8%AE%AE"><span class="nav-text">UDP协议</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS%E5%8D%8F%E8%AE%AE"><span class="nav-text">DNS协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NAT%E5%8D%8F%E8%AE%AE"><span class="nav-text">NAT协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DHCP%E5%8D%8F%E8%AE%AE"><span class="nav-text">DHCP协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP%E5%8D%8F%E8%AE%AE"><span class="nav-text">HTTP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E5%B8%B8%E8%A7%81%E8%AF%B7%E6%B1%82"><span class="nav-text">HTTP常见请求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E5%B8%B8%E8%A7%81%E7%8A%B6%E6%80%81%E7%A0%81"><span class="nav-text">HTTP常见状态码</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP%E5%92%8CHTTPS"><span class="nav-text">HTTP和HTTPS</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-text">路由选择协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E6%89%93%E5%BC%80%E4%B8%80%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5url%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E9%A1%B5%E9%9D%A2%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-text">当打开一个浏览器输入url到请求到页面的过程</span></a></li></ol></li></ol>
     </div>
 </div>
             </aside>
