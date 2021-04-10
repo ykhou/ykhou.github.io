@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JAVA关键字</title>
+      <link href="2021/04/09/JAVA%E5%85%B3%E9%94%AE%E5%AD%97/"/>
+      <url>2021/04/09/JAVA%E5%85%B3%E9%94%AE%E5%AD%97/</url>
+      
+        <content type="html"><![CDATA[<h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>final关键字主要用在三个地方：变量、方法和类。</p><ol><li>修饰变量<ul><li>将变量变为常量，在初始化变量后不能再改变值</li><li>如果是基本类型的变量，则其数值一旦初始化之后就不能修改</li><li>如果是引用类型的变量，则对其初始化之后就不能指向其他对象</li></ul></li><li>修饰方法<ul><li>被final修饰的方法不能被子类重写</li></ul></li><li>修饰类<ul><li>被final修饰的类不能被继承</li><li>且final类中的所有成员方法都会被隐式地指定为final方法</li></ul></li></ol><p>final修饰的好处</p><ol><li>final关键字提高了性能，JVM和Java应用会缓存final变量</li><li>final变量可以在多线程环境下保持线程安全</li><li>使用final的关键字提高了性能，JVM会对方法变量类进行优化</li></ol><h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>static修饰的语句块存放在堆的方法区中</p><ol><li>静态变量：依附在类中的变量，可以被类的所有实例共用</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> age = <span class="number">22</span>;</span><br></pre></td></tr></table></figure><ol start="2"><li>静态方法：依附在类中的方法。静态方法只能访问类中的静态变量和静态方法</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="3"><li>静态块：在类加载的时候执行块中的语句，块中不能访问非静态变量</li></ol><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;这是第一行&quot;</span>);</span><br><span class="line">    printAge();</span><br><span class="line">    System.out.println(<span class="string">&quot;这是第最后一行&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><ol start="4"><li>静态内部类：用static修饰内部类</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> default </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> default </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>MySQL</title>
       <link href="2021/03/26/MySQL/"/>
       <url>2021/03/26/MySQL/</url>
