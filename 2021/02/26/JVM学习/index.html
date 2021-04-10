@@ -204,12 +204,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>2.3k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.4k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>8 分钟</span>
         </span>
     
     
@@ -298,6 +298,8 @@
 <p>栈：栈内存，主管程序的运行，生命周期和线程同步。线程结束，栈内存也就释放了，对于栈来说 不存在垃圾回收问题 一旦线程结束 栈就over</p>
 <p>栈里压的东西：8大基本类型、对象引用、实例的方法</p>
 <p>栈运行的原理：栈帧</p>
+<p>栈溢出：StackOverflowErroe，如果线程请求的栈深度大于虚拟机所允许的深度，将抛出此异常，如无线递归、死循环<br>无线递归为什么会栈溢出：因为每次调用方法所产生的的资源都存放在虚拟机栈中，如果一直递归，就会填满栈。</p>
+<p>虚拟机栈存放什么：局部变量表、操作数栈、动态链接、方法出口<br>局部变量表存放了什么：存放了编译期的各种基本数据类型(八大基本类型)，对象引用类型(不等同于对象本身，可能是一个指向对象起始地址的引用指针，也可能是指向一个代表对象的句柄)</p>
 <p><img src="/2021/02/26/JVM%E5%AD%A6%E4%B9%A0/%E6%A0%88%E3%80%81%E5%A0%86%E5%92%8C%E6%96%B9%E6%B3%95%E5%8C%BA.png" alt="栈、堆和方法区"></p>
 <h3 id="9、三种JVM"><a href="#9、三种JVM" class="headerlink" title="9、三种JVM"></a>9、三种JVM</h3><ul>
 <li>Sun公司 HotSpot</li>

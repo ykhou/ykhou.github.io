@@ -9,7 +9,7 @@
     
     <title>
         
-            Java关键字 |
+            Java异常 |
         
         Kang`Blog
     </title>
@@ -156,7 +156,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Java关键字</span>
+            <span class="title-hover-animation">Java异常</span>
         </div>
 
         
@@ -174,7 +174,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-04-09 14:15:54
+        <i class="fas fa-edit"></i>&nbsp;2021-04-10 14:50:10
     </span>
     
         <span class="article-categories article-meta-item">
@@ -194,7 +194,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/">Java关键字</a>&nbsp;
+                        <a href="/tags/Java%E5%BC%82%E5%B8%B8/">Java异常</a>&nbsp;
                     </li>
                 
             </ul>
@@ -204,7 +204,7 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>366 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>383 字</span>
         </span>
     
     
@@ -225,58 +225,46 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="final"><a href="#final" class="headerlink" title="final"></a>final</h2><p>final关键字主要用在三个地方：变量、方法和类。</p>
-<ol>
-<li>修饰变量<ul>
-<li>将变量变为常量，在初始化变量后不能再改变值</li>
-<li>如果是基本类型的变量，则其数值一旦初始化之后就不能修改</li>
-<li>如果是引用类型的变量，则对其初始化之后就不能指向其他对象</li>
+            <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p><img src="/2021/04/10/Java%E5%BC%82%E5%B8%B8/Java%E5%BC%82%E5%B8%B8.png" alt="Java异常"></p>
+<h3 id="error"><a href="#error" class="headerlink" title="error"></a>error</h3><blockquote>
+<p>Error描述了Java运行时系统的内部错误和资源耗尽错误，如堆溢出和栈溢出</p>
+</blockquote>
+<p>堆溢出：OutOfMemoryError</p>
+<ul>
+<li>如果虚拟机在扩展栈时无法申请到足够的空间，则抛出此异常</li>
 </ul>
-</li>
-<li>修饰方法<ul>
-<li>被final修饰的方法不能被子类重写</li>
+<p>栈溢出：StackOverFlowError</p>
+<ul>
+<li>如果线程请求的栈深度大于虚拟机所允许的深度，就会抛出此异常</li>
 </ul>
-</li>
-<li>修饰类<ul>
-<li>被final修饰的类不能被继承</li>
-<li>且final类中的所有成员方法都会被隐式地指定为final方法</li>
-</ul>
-</li>
-</ol>
-<p>final修饰的好处</p>
+<h3 id="excption"><a href="#excption" class="headerlink" title="excption"></a>excption</h3><blockquote>
+<p>Exception分为运行时(RunTimeException)和其他异常(IOException/SqlException)</p>
+</blockquote>
+<p>RunTimeException：NullPointerException，ArithmeticException，IndexOutOfBoundsException</p>
+<h3 id="受检异常和非受检异常"><a href="#受检异常和非受检异常" class="headerlink" title="受检异常和非受检异常"></a>受检异常和非受检异常</h3><p>非受检异常：指编译期免检异常，包括派生于Error或RunTimeException类的所有异常。<br>受检异常：指编译时强制检查的异常，包括非受检异常的所有的其他异常。</p>
+<h2 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h2><blockquote>
+<p>异常处理的本质是抛出异常和捕获异常</p>
+</blockquote>
+<p>Java的异常处理是通过5个关键词来实现的：try、catch、throw、throws和finally。</p>
 <ol>
-<li>final关键字提高了性能，JVM和Java应用会缓存final变量</li>
-<li>final变量可以在多线程环境下保持线程安全</li>
-<li>使用final的关键字提高了性能，JVM会对方法变量类进行优化</li>
+<li>try用来指定一块预防所有异常的程序。</li>
+<li>catch子句紧跟在try块后面，用来指定你想要捕获的异常的类型；</li>
+<li>throw语句用来明确地抛出一个异常；</li>
+<li>throws用来声明一个方法可能抛出的各种异常；</li>
+<li>finally为确保一段代码不管发生什么异常状况都要被执行，在 finally 代码块中，可以运行清理类型等收尾善后性质的语句。</li>
 </ol>
-<h2 id="static"><a href="#static" class="headerlink" title="static"></a>static</h2><p>static修饰的语句块存放在堆的方法区中</p>
-<ol>
-<li>静态变量：依附在类中的变量，可以被类的所有实例共用</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span> age = <span class="number">22</span>;</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>静态方法：依附在类中的方法。静态方法只能访问类中的静态变量和静态方法</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(age)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>静态块：在类加载的时候执行块中的语句，块中不能访问非静态变量</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;这是第一行&quot;</span>);</span><br><span class="line">    printAge();</span><br><span class="line">    System.out.println(<span class="string">&quot;这是第最后一行&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
-<li>静态内部类：用static修饰内部类</li>
-</ol>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (name == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">info</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    <span class="comment">// 程序语句</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">// 程序语句</span></span><br><span class="line">&#125; <span class="keyword">catch</span>(ArithmeticException e) &#123;</span><br><span class="line">    <span class="comment">// 程序语句</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    <span class="comment">// 程序语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
 
         
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：Java关键字</li>
+        <li>本文标题：Java异常</li>
         <li>本文作者：Kang</li>
-        <li>创建时间：2021-04-09 14:15:54</li>
+        <li>创建时间：2021-04-10 14:50:10</li>
         <li>
-            本文链接：ykhou.github.io2021/04/09/JAVA关键字/
+            本文链接：ykhou.github.io2021/04/10/Java异常/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -290,29 +278,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/04/10/Java%E5%BC%82%E5%B8%B8/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Java异常</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/03/26/MySQL/"
+                           href="/2021/04/09/JAVA%E5%85%B3%E9%94%AE%E5%AD%97/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">MySQL</span>
+                                <span class="post-nav-title-item">Java关键字</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -432,7 +405,7 @@
             <aside class="page-aside">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#final"><span class="nav-text">final</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#static"><span class="nav-text">static</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#error"><span class="nav-text">error</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#excption"><span class="nav-text">excption</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%97%E6%A3%80%E5%BC%82%E5%B8%B8%E5%92%8C%E9%9D%9E%E5%8F%97%E6%A3%80%E5%BC%82%E5%B8%B8"><span class="nav-text">受检异常和非受检异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-text">异常处理</span></a></li></ol>
     </div>
 </div>
             </aside>
