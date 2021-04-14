@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>剑指Offer</title>
+      <link href="2021/04/14/%E5%89%91%E6%8C%87Offer/"/>
+      <url>2021/04/14/%E5%89%91%E6%8C%87Offer/</url>
+      
+        <content type="html"><![CDATA[<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="03数组中重复的数字"><a href="#03数组中重复的数字" class="headerlink" title="03数组中重复的数字"></a>03数组中重复的数字</h3><p>HashSet/哈希表</p><h4 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h4><ol><li>新建一个哈希表，哈希表只能存储不重复的数据；</li><li>遍历数组，如果该数字不存在哈希表中，则添加到哈希表中；如果已经被添加到哈希表中了，说明改数字为重复数字，就返回改数字；</li><li>最后必须加一个return语句，不然报错。</li></ol><h4 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h4><ul><li>时间复杂度O(N):遍历数组的耗费O(N)，查找和添加元素为O(N)；</li><li>空间复杂度O(N):HashSet耗费O(N)的空间</li></ul><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">findRepeatNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; hs = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hs.contains(num)) <span class="keyword">return</span> num;</span><br><span class="line">            hs.add(num);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 剑指Offer </tag>
+            
+            <tag> 算法 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java注解和反射</title>
       <link href="2021/04/10/Java%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84/"/>
       <url>2021/04/10/Java%E6%B3%A8%E8%A7%A3%E5%92%8C%E5%8F%8D%E5%B0%84/</url>
