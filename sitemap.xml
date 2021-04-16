@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ykhou.gitee.io/2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
+    
+    <lastmod>2021-04-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ykhou.gitee.io/2021/03/18/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</loc>
     
     <lastmod>2021-04-16</lastmod>
@@ -362,6 +369,13 @@
   
   <url>
     <loc>http://ykhou.gitee.io/tags/%E5%8F%8D%E5%B0%84/</loc>
+    <lastmod>2021-04-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ykhou.gitee.io/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
     <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

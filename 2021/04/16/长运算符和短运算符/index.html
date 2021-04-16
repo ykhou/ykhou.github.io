@@ -9,7 +9,7 @@
     
     <title>
         
-            标签 |
+            长运算符和短运算符 |
         
         Kang`Blog
     </title>
@@ -152,15 +152,148 @@
                 <div class="main-content">
 
                     
-                        
-    <div class="fade-in-down-animation">
-        <div class="tagcloud-container">
-            <div class="tagcloud-content">
-                <a href="/tags/Hexo/" style="font-size: 1rem;">Hexo</a> <a href="/tags/JVM/" style="font-size: 1.4rem;">JVM</a> <a href="/tags/Java/" style="font-size: 1.6rem;">Java</a> <a href="/tags/Java%E5%85%B3%E9%94%AE%E5%AD%97/" style="font-size: 1rem;">Java关键字</a> <a href="/tags/Lambda/" style="font-size: 1rem;">Lambda</a> <a href="/tags/MySQL/" style="font-size: 1rem;">MySQL</a> <a href="/tags/VsCode/" style="font-size: 1.2rem;">VsCode</a> <a href="/tags/github/" style="font-size: 1rem;">github</a> <a href="/tags/%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/" style="font-size: 1rem;">冒泡排序</a> <a href="/tags/%E5%89%91%E6%8C%87Offer/" style="font-size: 1rem;">剑指Offer</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1rem;">反射</a> <a href="/tags/%E5%BC%82%E5%B8%B8/" style="font-size: 1rem;">异常</a> <a href="/tags/%E5%BD%92%E5%B9%B6%E7%AE%97%E6%B3%95/" style="font-size: 1rem;">归并算法</a> <a href="/tags/%E5%BF%AB%E9%80%9F%E7%AE%97%E6%B3%95/" style="font-size: 1rem;">快速算法</a> <a href="/tags/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" style="font-size: 1rem;">插入排序</a> <a href="/tags/%E6%B3%A8%E8%A7%A3/" style="font-size: 1rem;">注解</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1rem;">算法</a> <a href="/tags/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/" style="font-size: 1rem;">计数排序</a> <a href="/tags/%E8%AE%A1%E7%BD%91/" style="font-size: 1rem;">计网</a> <a href="/tags/%E8%BE%93%E5%85%A5%E6%B3%95/" style="font-size: 1rem;">输入法</a> <a href="/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/" style="font-size: 1rem;">运算符</a> <a href="/tags/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" style="font-size: 1rem;">选择排序</a>
-            </div>
-        </div>
-    </div>
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
 
+        <div class="article-title">
+            <span class="title-hover-animation">长运算符和短运算符</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Kang</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-04-16 15:58:04
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%9C%AF%E4%B8%9A%E4%B8%93%E6%94%BB/">术业专攻</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/">运算符</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>389 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <blockquote>
+<p>今天看书突然看到了长运算符和短运算符，文中说&amp;&amp;和||是短运算符，&amp;和|是长运算符，当时就感觉很疑惑，&amp;&amp;比&amp;长，怎么反而是短运算符了呢？<br>想着就去百度了一下长运算符和短运算符，然而好像并没有这个概念。。。于是我找到了这本书的英文原版，如下</p>
+</blockquote>
+<p><img src="/2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/HeadFirstJava-p151.png" alt="HeadFirstJava"></p>
+<ul>
+<li>Short Circuit Operators：短路运算符</li>
+<li>Non Short Circuit Operators：非短路运算符</li>
+</ul>
+<p>（果然是翻译问题）那下面介绍一个短路运算符和非短路运算符</p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="短路运算符"><a href="#短路运算符" class="headerlink" title="短路运算符"></a>短路运算符</h3><p>短路运算符就是从左到右的运算中，前者满足要求，就不执行后者了。比如</p>
+<ul>
+<li>A &amp;&amp; B：从左到右执行，如果A判断为false，则不会去判断B条件，结果为false；如果判断A为true，同时判断B为true，结果为true。</li>
+<li>A || B：从左到右执行，如果A判断为false，同时判断B为false，则结果为false；如果A为true，就不会去判断B条件，结果为true。</li>
+</ul>
+<p>所以&amp;&amp;和||右侧最好不要有赋值的语句</p>
+<h3 id="非短路运算符"><a href="#非短路运算符" class="headerlink" title="非短路运算符"></a>非短路运算符</h3><p>无论如何都会执行&amp;和|两侧的内容</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>对于 &amp;&amp; 而言</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (refVar != <span class="keyword">null</span> &amp;&amp; refVar.isValidType()) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果<code>refVal!=null</code>为false，程序处于短路状态，就不会执行<code>refVal.isValidType()</code>;<br>如果<code>refVal=null</code>为true，才会执行<code>refVal.isValidType()</code>。</p>
+<p>但是对 &amp; 而言</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (refVar != <span class="keyword">null</span> &amp; refVar.isValidType()) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无论<code>refVal!=null</code>的判断如何，都会执行<code>refVal.isValidType()</code>。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：长运算符和短运算符</li>
+        <li>本文作者：Kang</li>
+        <li>创建时间：2021-04-16 15:58:04</li>
+        <li>
+            本文链接：ykhou.github.io2021/04/16/长运算符和短运算符/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/04/14/%E5%89%91%E6%8C%87Offer/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">剑指Offer</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
 
 
                     
@@ -199,6 +332,23 @@
             </div>
         </div>
 
+        
+            <div class="post-tools">
+                <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+            </div>
         
 
         <div class="right-bottom-side-tools">
@@ -246,6 +396,14 @@
         </div>
 
         
+            <aside class="page-aside">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">短路运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9D%9E%E7%9F%AD%E8%B7%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-text">非短路运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BE%E4%BE%8B"><span class="nav-text">举例</span></a></li></ol></li></ol>
+    </div>
+</div>
+            </aside>
+        
 
         <div class="image-viewer-container">
     <img src="">
@@ -269,6 +427,8 @@
 
 
 <div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/toc.js"></script>
     
 </div>
 

@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>长运算符和短运算符</title>
+      <link href="2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+      <url>2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>今天看书突然看到了长运算符和短运算符，文中说&amp;&amp;和||是短运算符，&amp;和|是长运算符，当时就感觉很疑惑，&amp;&amp;比&amp;长，怎么反而是短运算符了呢？<br>想着就去百度了一下长运算符和短运算符，然而好像并没有这个概念。。。于是我找到了这本书的英文原版，如下</p></blockquote><p><img src="/2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/HeadFirstJava-p151.png" alt="HeadFirstJava"></p><ul><li>Short Circuit Operators：短路运算符</li><li>Non Short Circuit Operators：非短路运算符</li></ul><p>（果然是翻译问题）那下面介绍一个短路运算符和非短路运算符</p><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="短路运算符"><a href="#短路运算符" class="headerlink" title="短路运算符"></a>短路运算符</h3><p>短路运算符就是从左到右的运算中，前者满足要求，就不执行后者了。比如</p><ul><li>A &amp;&amp; B：从左到右执行，如果A判断为false，则不会去判断B条件，结果为false；如果判断A为true，同时判断B为true，结果为true。</li><li>A || B：从左到右执行，如果A判断为false，同时判断B为false，则结果为false；如果A为true，就不会去判断B条件，结果为true。</li></ul><p>所以&amp;&amp;和||右侧最好不要有赋值的语句</p><h3 id="非短路运算符"><a href="#非短路运算符" class="headerlink" title="非短路运算符"></a>非短路运算符</h3><p>无论如何都会执行&amp;和|两侧的内容</p><h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>对于 &amp;&amp; 而言</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (refVar != <span class="keyword">null</span> &amp;&amp; refVar.isValidType()) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果<code>refVal!=null</code>为false，程序处于短路状态，就不会执行<code>refVal.isValidType()</code>;<br>如果<code>refVal=null</code>为true，才会执行<code>refVal.isValidType()</code>。</p><p>但是对 &amp; 而言</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (refVar != <span class="keyword">null</span> &amp; refVar.isValidType()) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>无论<code>refVal!=null</code>的判断如何，都会执行<code>refVal.isValidType()</code>。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 术业专攻 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 运算符 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>剑指Offer</title>
       <link href="2021/04/14/%E5%89%91%E6%8C%87Offer/"/>
       <url>2021/04/14/%E5%89%91%E6%8C%87Offer/</url>

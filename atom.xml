@@ -6,7 +6,7 @@
   <link href="http://ykhou.gitee.io/atom.xml" rel="self"/>
   
   <link href="http://ykhou.gitee.io/"/>
-  <updated>2021-04-16T06:14:46.415Z</updated>
+  <updated>2021-04-16T09:23:10.548Z</updated>
   <id>http://ykhou.gitee.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>长运算符和短运算符</title>
+    <link href="http://ykhou.gitee.io/2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>http://ykhou.gitee.io/2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/</id>
+    <published>2021-04-16T07:58:04.000Z</published>
+    <updated>2021-04-16T09:23:10.548Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>今天看书突然看到了长运算符和短运算符，文中说&amp;&amp;和||是短运算符，&amp;和|是长运算符，当时就感觉很疑惑，&amp;&amp;比&amp;长，怎么反而是短运算符了呢？<br>想着就去百度了一下长运算符和短运算符，然而好像并没有这个概念。。。于是我找到了这本书的英文原版，如下</p></blockquote><p><img src="/2021/04/16/%E9%95%BF%E8%BF%90%E7%AE%97%E7%AC%A6%E5%92%8C%E7%9F%AD%E8%BF%90%E7%AE%97%E7%AC%A6/HeadFirstJava-p151.png" alt="HeadFirstJava"></p><ul><li>Short Circuit Operators：短路运算符</li><li>Non Short Circuit Operators：非短路运算符</li></ul><p>（果然是翻译问题）那下面介绍一个短路运算符和非短路运算符</p><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><h3 id="短路运算符"><a href="#短路运算符" class="headerlink" title="短路运算符"></a>短路运算符</h3><p>短路运算符就是从左到右的运算中，前者满足要求，就不执行后者了。比如</p><ul><li>A &amp;&amp; B：从左到右执行，如果A判断为false，则不会去判断B条件，结果为false；如果判断A为true，同时判断B为true，结果为true。</li><li>A || B：从左到右执行，如果A判断为false，同时判断B为false，则结果为false；如果A为true，就不会去判断B条件，结果为true。</li></ul><p>所以&amp;&amp;和||右侧最好不要有赋值的语句</p><h3 id="非短路运算符"><a href="#非短路运算符" class="headerlink" title="非短路运算符"></a>非短路运算符</h3><p>无论如何都会执行&amp;和|两侧的内容</p><h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>对于 &amp;&amp; 而言</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (refVar != <span class="keyword">null</span> &amp;&amp; refVar.isValidType()) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如果<code>refVal!=null</code>为false，程序处于短路状态，就不会执行<code>refVal.isValidType()</code>;<br>如果<code>refVal=null</code>为true，才会执行<code>refVal.isValidType()</code>。</p><p>但是对 &amp; 而言</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (refVar != <span class="keyword">null</span> &amp; refVar.isValidType()) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>无论<code>refVal!=null</code>的判断如何，都会执行<code>refVal.isValidType()</code>。</p>]]></content>
+    
+    
+    <summary type="html">与 &amp; 的区别，短路运算符与非短路运算符</summary>
+    
+    
+    
+    <category term="术业专攻" scheme="http://ykhou.gitee.io/categories/%E6%9C%AF%E4%B8%9A%E4%B8%93%E6%94%BB/"/>
+    
+    
+    <category term="运算符" scheme="http://ykhou.gitee.io/tags/%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>剑指Offer</title>
@@ -472,31 +493,6 @@
     
     
     <category term="Java" scheme="http://ykhou.gitee.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VsCode以管理员模式运行终端</title>
-    <link href="http://ykhou.gitee.io/2021/02/17/VsCode%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF/"/>
-    <id>http://ykhou.gitee.io/2021/02/17/VsCode%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF/</id>
-    <published>2021-02-17T02:50:05.000Z</published>
-    <updated>2021-04-16T06:11:12.590Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><blockquote><p>之前一直在ubuntu系统下运行终端，现在回到windows下后，每次将终端位置调到对应文件夹感觉很麻烦，于是想在VsCode下面的终端进行操作，但是发现系统禁止运行脚本</p></blockquote><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo : 无法加载文件 C:\Users\kangkang\AppData\Roaming\npm\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https:/go.microsoft.com/fwlink/?LinkID=<span class="number">135170</span> 中的 about </span><br><span class="line">_Execution_Policies。</span><br><span class="line">所在位置 行:<span class="number">1</span> 字符: <span class="number">1</span></span><br><span class="line">+ hexo</span><br><span class="line">+ ~~~~</span><br><span class="line">    + CategoryInfo          : SecurityError: (:) []，PSSecurityException</span><br><span class="line">    + FullyQualifiedErrorId : UnauthorizedAccess</span><br></pre></td></tr></table></figure><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>将VsCode改为以管理员模式运行</li></ol><p><img src="/2021/02/17/VsCode%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF/VsCode%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C.png" alt="以管理员模式运行"></p><ol start="2"><li>在VsCode的终端中运行get-ExecutionPolicy,显示Restricted,表示状态是禁止的</li><li>然后运行set-ExecutionPolicy RemoteSigned</li></ol><blockquote><p>成功解决</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;之前一直在ubuntu系统下运行终端，现在回到windows下后，每次将终端位置调到对应文件夹感觉</summary>
-      
-    
-    
-    
-    <category term="趣事随笔" scheme="http://ykhou.gitee.io/categories/%E8%B6%A3%E4%BA%8B%E9%9A%8F%E7%AC%94/"/>
-    
-    
-    <category term="VsCode" scheme="http://ykhou.gitee.io/tags/VsCode/"/>
     
   </entry>
   
