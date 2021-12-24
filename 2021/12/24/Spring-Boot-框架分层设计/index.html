@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="如有问题或建议，请通过 houyongkang@bupt.edu.cn 联系">
+    <meta name="author" content="Kang">
+    
+    <title>
+        
+            Spring Boot 框架分层设计 |
+        
+        Kang`Blog
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"ykhou.gitee.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Peace and Love"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.0"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Kang`s blog" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+     
+        
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Kang`Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/lab/Clock"
+                            >
+                                LAB
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/lab/Clock">LAB</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <div class="main-content">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Spring Boot 框架分层设计</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Kang</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-12-24 16:59:51
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/default/">default</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/default/">default</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="一、理论"><a href="#一、理论" class="headerlink" title="一、理论"></a>一、理论</h2><blockquote>
+<p>Spring Boot 框架分为四层，分别为 model 层、mapper 层、service 层和controller 层</p>
+</blockquote>
+<p><strong>model 层</strong></p>
+<ul>
+<li>数据模型层，相当于 MVC 中的 M层，又称 entity 层</li>
+<li>model 层存放实体类，数据库中的每一张表对应一个实体类，属性与表中的属性值基本保持一致</li>
+</ul>
+<p><strong>mapper 层</strong></p>
+<ul>
+<li>数据持久层，相当于 DAO 层（date access object）</li>
+<li>mapper 层直接与数据库进行交互，访问数据库，发送 SQL 语句，完成数据的增删改查操作，并提供接口给 service 层</li>
+</ul>
+<p><strong>service 层</strong></p>
+<ul>
+<li>业务逻辑层，分为接口和实现类</li>
+<li>负责进行逻辑业务处理，并提供接口给 controller 层</li>
+</ul>
+<p><strong>controller 层</strong></p>
+<ul>
+<li>控制层，相当于 MVC 中的 C 层</li>
+<li>负责前后端交互，接受前端请求，调用service层，接收service层返回的数据，最后返回具体的页面和数据到客户端。</li>
+</ul>
+<h2 id="二、demo"><a href="#二、demo" class="headerlink" title="二、demo"></a>二、demo</h2><blockquote>
+<p>最近也是做了一个小demo，熟悉了 Spring Boot 的整个结构</p>
+</blockquote>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/SpringBoot.png" alt="业务流程"></p>
+<h3 id="1、后端及数据库部分"><a href="#1、后端及数据库部分" class="headerlink" title="1、后端及数据库部分"></a>1、后端及数据库部分</h3><p>整个项目后端部分的目录结构如下所示</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="目录结构"></p>
+<h4 id="1-1代码设计及实现"><a href="#1-1代码设计及实现" class="headerlink" title="1.1代码设计及实现"></a>1.1代码设计及实现</h4><ol>
+<li>数据库设计</li>
+</ol>
+<p>主要关注了 id、name、author、price</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1.png" alt="数据库"></p>
+<p>连接到数据库及端口配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">datasource:</span></span><br><span class="line">    <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/library?useUnicode&amp;encodeing=UTF-8</span></span><br><span class="line">    <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">root</span></span><br><span class="line">    <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">  <span class="attr">jpa:</span></span><br><span class="line">    <span class="attr">show-sql:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">properties:</span></span><br><span class="line">      <span class="attr">hibernate:</span></span><br><span class="line">        <span class="attr">format_sql:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>entity 层</li>
+</ol>
+<p>建立数据表 book 对应的实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kang.springbootbook.entity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.annotations.Table;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.persistence.Entity;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.GeneratedValue;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.GenerationType;</span><br><span class="line"><span class="keyword">import</span> javax.persistence.Id;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Table(appliesTo = &quot;book&quot;)</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue(strategy = GenerationType.IDENTITY)</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line">    <span class="keyword">private</span> Integer price;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>mapper 层</li>
+</ol>
+<p>使用 JPA(Java Persistence API)，提供了持久层的实现<br>JPA 可以为持久层提供基本的数据库操作，如基本的 CRUD 和排序、分页等</p>
+<p>BookRepository.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kang.springbootbook.repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.entity.Book;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.jpa.repository.JpaRepository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BookRepository</span> <span class="keyword">extends</span> <span class="title">JpaRepository</span>&lt;<span class="title">Book</span>, <span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>service 层</li>
+</ol>
+<p>接口 BookService.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kang.springbootbook.service;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.entity.Book;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BookService</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Page&lt;Book&gt; <span class="title">findAll</span><span class="params">(Integer page, Integer size)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Book <span class="title">findById</span><span class="params">(Integer id)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">save</span><span class="params">(Book book)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">update</span><span class="params">(Book book)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Integer id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>实现类 BookServiceImpl.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kang.springbootbook.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.entity.Book;</span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.repository.BookRepository;</span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.service.BookService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.PageRequest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookServiceImpl</span> <span class="keyword">implements</span> <span class="title">BookService</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookRepository bookRepository;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Page&lt;Book&gt; <span class="title">findAll</span><span class="params">(Integer page, Integer size)</span> </span>&#123;</span><br><span class="line">        Pageable pageable = PageRequest.of(page-<span class="number">1</span>, size);</span><br><span class="line">        <span class="keyword">return</span> bookRepository.findAll(pageable);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Book <span class="title">findById</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bookRepository.findById(id).get();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">save</span><span class="params">(Book book)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (bookRepository.save(book) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">update</span><span class="params">(Book book)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (bookRepository.save(book) != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;success&quot;</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(Integer id)</span> </span>&#123;</span><br><span class="line">        bookRepository.deleteById(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>controller 层</li>
+</ol>
+<p>BookHandler.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.kang.springbootbook.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.entity.Book;</span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.repository.BookRepository;</span><br><span class="line"><span class="keyword">import</span> com.kang.springbootbook.service.BookService;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Page;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.PageRequest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.domain.Pageable;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/book&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BookHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> BookService bookService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;findAll/&#123;page&#125;/&#123;size&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Page&lt;Book&gt; <span class="title">findAll</span><span class="params">(<span class="meta">@PathVariable(&quot;page&quot;)</span> Integer page, <span class="meta">@PathVariable(&quot;size&quot;)</span> Integer size)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bookService.findAll(page, size);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/save&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">save</span><span class="params">(<span class="meta">@RequestBody</span> Book book)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bookService.save(book);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/findById/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Book <span class="title">findById</span><span class="params">(<span class="meta">@PathVariable</span> Integer id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bookService.findById(id);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PutMapping(&quot;/update&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">update</span><span class="params">(<span class="meta">@RequestBody</span> Book book)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> bookService.save(book);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@DeleteMapping(&quot;/delete/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delete</span><span class="params">(<span class="meta">@PathVariable</span> Integer id)</span> </span>&#123;</span><br><span class="line">        bookService.delete(id);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="1-2-运行结果展示"><a href="#1-2-运行结果展示" class="headerlink" title="1.2 运行结果展示"></a>1.2 运行结果展示</h4><p><em>findAll/1/6</em> 查询，查询第一页的六个内容</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/findAll.png" alt="findAll"></p>
+<p><em>findById/1</em> 查询 id = 1 的内容</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/findById.png" alt="findAll"></p>
+<h3 id="2、前端部分"><a href="#2、前端部分" class="headerlink" title="2、前端部分"></a>2、前端部分</h3><p>前端使用了 vue + element UI 框架<br>整个项目前端部分的目录结构如下所示</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84-%E5%89%8D%E7%AB%AF.png" alt="目录结构"></p>
+<h4 id="2-1-运行结果展示"><a href="#2-1-运行结果展示" class="headerlink" title="2.1 运行结果展示"></a>2.1 运行结果展示</h4><p>BookManage 界面，可以分页查询所有的 book</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/BookManage.png" alt="目录结构"></p>
+<p>添加 book，通过 书名和作者 添加</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/AddBook.png" alt="目录结构"></p>
+<p>更改 book 的内容，目前可以更改 书名和作者</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/UpdateBook.png" alt="目录结构"></p>
+<p>删除 book</p>
+<p><img src="/2021/12/24/Spring-Boot-%E6%A1%86%E6%9E%B6%E5%88%86%E5%B1%82%E8%AE%BE%E8%AE%A1/DeleteBook.png" alt="目录结构"></p>
+<h2 id="三、All-in-all"><a href="#三、All-in-all" class="headerlink" title="三、All in all"></a>三、All in all</h2><p>总之，这是自己跟着视频敲得一个练手的小 Demo，相比于原视频，添加了 Service 层，更改了 Vue 的部分显示</p>
+<p>下面打算换掉 JPA，使用 MyBatis 实现 持久层</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：Spring Boot 框架分层设计</li>
+        <li>本文作者：Kang</li>
+        <li>创建时间：2021-12-24 16:59:51</li>
+        <li>
+            本文链接：ykhou.github.io2021/12/24/Spring-Boot-框架分层设计/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/11/13/List/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">LinkedList</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </div>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Kang</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+            </div>
+        </div>
+
+        
+            <div class="post-tools">
+                <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+            </div>
+        
+
+        <div class="right-bottom-side-tools">
+            <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <aside class="page-aside">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%90%86%E8%AE%BA"><span class="nav-text">一、理论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81demo"><span class="nav-text">二、demo</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E5%90%8E%E7%AB%AF%E5%8F%8A%E6%95%B0%E6%8D%AE%E5%BA%93%E9%83%A8%E5%88%86"><span class="nav-text">1、后端及数据库部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1%E5%8F%8A%E5%AE%9E%E7%8E%B0"><span class="nav-text">1.1代码设计及实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="nav-text">1.2 运行结果展示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E5%89%8D%E7%AB%AF%E9%83%A8%E5%88%86"><span class="nav-text">2、前端部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E8%BF%90%E8%A1%8C%E7%BB%93%E6%9E%9C%E5%B1%95%E7%A4%BA"><span class="nav-text">2.1 运行结果展示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81All-in-all"><span class="nav-text">三、All in all</span></a></li></ol>
+    </div>
+</div>
+            </aside>
+        
+
+        <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+        
+    
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
