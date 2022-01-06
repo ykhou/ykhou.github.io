@@ -204,12 +204,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>5.6k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>5.8k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>26 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>27 分钟</span>
         </span>
     
     
@@ -419,10 +419,10 @@
 </blockquote>
 <h3 id="事务特性"><a href="#事务特性" class="headerlink" title="事务特性"></a>事务特性</h3><p>ACID四大特性</p>
 <ul>
-<li>A原子性：事务是最小的工作单元，不可再分</li>
-<li>C一致性：保证多条DML语句同时成功或同时失败</li>
-<li>I隔离性：事务A和事务B之间具有隔离</li>
-<li>D持久化：最终数据必须持久化到硬盘文件中，事务才算成功的结束</li>
+<li>A原子性：一个事务要么全部提交成功，要么全部失败回滚，不会结束在中间某个环节。事务在执行过程中发生错误，会被恢复（Rollback）到事务开始前的状态，就像这个事务从来没有执行过一样。</li>
+<li>C一致性：事务的执行不能破坏数据库数据的完整性和一致性，一个事务在执行之前和执行之后，数据库都必须处于一致性状态。如果数据库系统在运行过程中发生故障，有些事务尚未完成就被迫中断，这些未完成的事务对数据库所作的修改有一部分已写入物理数据库，这是数据库就处于一种不正确的状态，也就是不一致的状态</li>
+<li>I隔离性：数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致数据的不一致。</li>
+<li>D持久化：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。</li>
 </ul>
 <p>隔离级别</p>
 <ul>
