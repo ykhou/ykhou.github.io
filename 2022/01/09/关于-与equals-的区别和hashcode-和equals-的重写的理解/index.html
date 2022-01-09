@@ -9,7 +9,7 @@
     
     <title>
         
-            Java数据类型 |
+            关于==与equals()的区别和hashCode()和equals()的重写的理解 |
         
         Kang`Blog
     </title>
@@ -156,7 +156,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Java数据类型</span>
+            <span class="title-hover-animation">关于==与equals()的区别和hashCode()和equals()的重写的理解</span>
         </div>
 
         
@@ -174,7 +174,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-02-19 16:00:07
+        <i class="fas fa-edit"></i>&nbsp;2022-01-09 21:02:38
     </span>
     
         <span class="article-categories article-meta-item">
@@ -194,7 +194,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Java/">Java</a>&nbsp;
+                        <a href="/tags/default/">default</a>&nbsp;
                     </li>
                 
             </ul>
@@ -204,12 +204,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.1k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
         </span>
     
     
@@ -225,47 +225,55 @@
         
 
         <div class="article-content markdown-body">
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>最近学习equals方法时，遇到了一个问题，那就是String属于什么数据类型<br>平时总喜欢把int、String类型混在一起，但是它真的和int属于同一类型吗</p>
-</blockquote>
-<h2 id="Java数据类型"><a href="#Java数据类型" class="headerlink" title="Java数据类型"></a>Java数据类型</h2><p>java提供两种不同的数据类型:基本数据类型和引用数据类型</p>
-<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>基本数据类型共八种，分为三大类。除了这八种，其余的都是引用数据类型。<br><img src="/2021/02/19/Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="基本数据类型"></p>
+            <h2 id="1、Java数据类型"><a href="#1、Java数据类型" class="headerlink" title="1、Java数据类型"></a>1、Java数据类型</h2><p>java提供两种不同的数据类型:基本数据类型和引用数据类型</p>
+<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><p>基本数据类型共八种，分为三大类。除了这八种，其余的都是引用数据类型。<br><img src="/2022/01/09/%E5%85%B3%E4%BA%8E-%E4%B8%8Eequals-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8Chashcode-%E5%92%8Cequals-%E7%9A%84%E9%87%8D%E5%86%99%E7%9A%84%E7%90%86%E8%A7%A3/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="基本数据类型"></p>
 <ol>
 <li>基本数据类型的值是一个简单的数字，字符或布尔值，java虚拟机会为其分配数据类型实际占用的内存空间;</li>
 <li>基本数据类型的变量是局部变量时，存储在栈里面;是成员变量时，存放在堆里;</li>
 <li>基本数据类型的值是不可变的(不能给基本数据类型添加属性和方法);</li>
 <li>基本数据类型的比较是值的比较(他们的值相等时就是相等的)。</li>
 </ol>
-<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>引用数据类型可以分为：类、接口、数组。<br><img src="/2021/02/19/Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="引用数据类型"></p>
+<h3 id="引用数据类型"><a href="#引用数据类型" class="headerlink" title="引用数据类型"></a>引用数据类型</h3><p>引用数据类型可以分为：类、接口、数组。<br><img src="/2022/01/09/%E5%85%B3%E4%BA%8E-%E4%B8%8Eequals-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8Chashcode-%E5%92%8Cequals-%E7%9A%84%E9%87%8D%E5%86%99%E7%9A%84%E7%90%86%E8%A7%A3/%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png" alt="引用数据类型"></p>
 <ol>
 <li>引用数据类型的变量的值是一个地址，而这个地址指向的堆内存中的一个值或一组值;</li>
 <li>引用数据类型的值是可变的，且可以拥有属性和方法</li>
 </ol>
-<p>其中字符串String属于引用数据类型，因为String属于一个类。</p>
+<p>其中字符串String属于引用数据类型。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = <span class="string">&quot;China&quot;</span>;</span><br><span class="line">String b = a; <span class="comment">// a、b都指向常量池中的China</span></span><br><span class="line"></span><br><span class="line">String c = <span class="keyword">new</span> String(<span class="string">&quot;China&quot;</span>);</span><br><span class="line">String d = c; <span class="comment">// c、d存储同一个地址，这个地址指向栈中的China</span></span><br></pre></td></tr></table></figure>
-<h2 id="和equals的区别"><a href="#和equals的区别" class="headerlink" title="==和equals的区别"></a>==和equals的区别</h2><h3 id="使用-比较"><a href="#使用-比较" class="headerlink" title="使用==比较"></a>使用==比较</h3><p>对于基本数据类型：比较值是否相等<br>对于引用数据类型：比较地址是否相同</p>
-<h3 id="使用equals比较"><a href="#使用equals比较" class="headerlink" title="使用equals比较"></a>使用equals比较</h3><p>equals方法是Object类的一个方法，Java当中所有的类都是继承于Object这个超类。如果没有对该方法进行重写的话，调用的仍然是Object类中的方法，而Object中的equals方法返回的却是==的判断。<br>Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals。</p>
+<h2 id="2、-和-equals-的区别"><a href="#2、-和-equals-的区别" class="headerlink" title="2、== 和 equals() 的区别"></a>2、== 和 equals() 的区别</h2><h3 id="使用-比较"><a href="#使用-比较" class="headerlink" title="使用 == 比较"></a>使用 == 比较</h3><p>对于基本数据类型：比较值是否相等<br>对于引用数据类型：比较地址是否相同</p>
+<h3 id="使用-equals-比较"><a href="#使用-equals-比较" class="headerlink" title="使用 equals() 比较"></a>使用 equals() 比较</h3><p>equals() 方法是 Object 类的一个方法，Java当中所有的类都是继承于 Object 这个超类。如果没有对该方法进行重写的话，调用的仍然是 Object 类中的方法，而 Object 中的 equals() 方法返回的是 == 的判断。<br>Object 的 equals() 方法容易抛空指针异常，应使用常量或确定有值的对象来调用 equals() 。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在实际使用中，一般会重写定义的class的equals方法，如String类的equals源码如下。<br>即两个字符串使用 == 相等  或者  两个字符串的所有组成字符都相等返回true，其他情况返回false。这里就定义String根据equals方法判断是否相等的逻辑。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line"> <span class="keyword">if</span> (object == <span class="keyword">this</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line"> &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">if</span> (object <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">   String s1 = <span class="keyword">this</span>;</span><br><span class="line">   String s2 = (String) object;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> s1len = s1.lengthInternal();</span><br><span class="line">   <span class="keyword">int</span> s2len = s2.lengthInternal();</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (s1len != s2len) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">byte</span>[] s1Value = s1.value;</span><br><span class="line">   <span class="keyword">byte</span>[] s2Value = s2.value;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span> (s1Value == s2Value) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// There was a time hole between first read of s.hashCode and second read if another thread does hashcode</span></span><br><span class="line">    <span class="comment">// computing for incoming string object</span></span><br><span class="line">    <span class="keyword">int</span> s1hash = s1.hashCode;</span><br><span class="line">    <span class="keyword">int</span> s2hash = s2.hashCode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (s1hash != <span class="number">0</span> &amp;&amp; s2hash != <span class="number">0</span> &amp;&amp; s1hash != s2hash) &#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="和equals的区别-1"><a href="#和equals的区别-1" class="headerlink" title="==和equals的区别"></a>==和equals的区别</h3><ul>
+<p>在实际使用中，一般会重写 equals() 方法，如 String 类的 equals() 源码如下。<br>即两个字符串使用 == 相等 或者 比较的字符串是否属于 String 且 两个字符串 hashcode相等 且 两个字符串所有组成字符都相等返回 true，其他情况返回 false。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object anObject)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> == anObject) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (anObject <span class="keyword">instanceof</span> String aString)</span><br><span class="line">            &amp;&amp; (!COMPACT_STRINGS || <span class="keyword">this</span>.coder == aString.coder)</span><br><span class="line">            &amp;&amp; StringLatin1.equals(value, aString.value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基本数据类型不能使用 equals()</p>
+<h3 id="和-equals-的区别举例"><a href="#和-equals-的区别举例" class="headerlink" title="== 和 equals() 的区别举例"></a>== 和 equals() 的区别举例</h3><ul>
 <li>String str = “China”; 先在内存中找是不是有”China”这个对象,如果有，就让str指向那个”China”.如果内存里没有”China”，就创建一个新的对象保存”China”;</li>
 <li>String str=new String(“China”) 是不管内存里是不是已经有”China”这个对象，都新建一个对象保存”China”。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String a = <span class="keyword">new</span> String(<span class="string">&quot;China&quot;</span>); <span class="comment">// a 为一个引用</span></span><br><span class="line">        String b = <span class="keyword">new</span> String(<span class="string">&quot;China&quot;</span>); <span class="comment">// b为另一个引用,对象的内容一样</span></span><br><span class="line">        String aa = <span class="string">&quot;China&quot;</span>; <span class="comment">// 放在常量池中</span></span><br><span class="line">        String bb = <span class="string">&quot;China&quot;</span>; <span class="comment">// 从常量池中查找 China</span></span><br><span class="line">        <span class="keyword">if</span> (aa == bb) <span class="comment">// true</span></span><br><span class="line">            System.out.println(<span class="string">&quot;aa==bb&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (a == b) <span class="comment">// false,非同一对象</span></span><br><span class="line">            System.out.println(<span class="string">&quot;a==b&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (a.equals(b)) <span class="comment">// true,重写</span></span><br><span class="line">            System.out.println(<span class="string">&quot;aEQb&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">42</span> == <span class="number">42.0</span>) &#123; <span class="comment">// true</span></span><br><span class="line">            System.out.println(<span class="string">&quot;true&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>当使用自动装箱方式创建一个Integer对象时，当数值在-128 ~127时，会将创建的 Integer 对象缓存起来，当下次再出现该数值时，直接从缓存中取出对应的Integer对象;数值在范围外时，都会创建新的对象。</p>
+<p>当使用自动装箱方式创建一个Integer对象时，当数值在-128 ~ 127时，会将创建的 Integer 对象缓存起来，当下次再出现该数值时，直接从缓存中取出对应的Integer对象;数值在范围外时，都会创建新的对象。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Integer x1 = <span class="number">3</span>;</span><br><span class="line">        Integer y1 = <span class="number">3</span>;</span><br><span class="line">        Integer x2 = <span class="number">300</span>;</span><br><span class="line">        Integer y2 = <span class="number">300</span>;</span><br><span class="line">        System.out.println(x1 == y1);<span class="comment">// true</span></span><br><span class="line">        System.out.println(x2 == y2);<span class="comment">// false</span></span><br><span class="line"></span><br><span class="line">        Integer a = <span class="keyword">new</span> Integer(<span class="number">3</span>);</span><br><span class="line">        Integer b = <span class="keyword">new</span> Integer(<span class="number">3</span>);</span><br><span class="line">        System.out.println(a == b);<span class="comment">//false</span></span><br><span class="line">        System.out.println(a.equals(b));<span class="comment">//true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3、重写-equals-时，为什么也要重写-hashCode"><a href="#3、重写-equals-时，为什么也要重写-hashCode" class="headerlink" title="3、重写 equals() 时，为什么也要重写 hashCode()"></a>3、重写 equals() 时，为什么也要重写 hashCode()</h2><h3 id="hashCode-的作用"><a href="#hashCode-的作用" class="headerlink" title="hashCode() 的作用"></a>hashCode() 的作用</h3><p>hashCode() 的作用是获取哈希码，返回一个int整数，这个哈希码的作用是确定该对象在哈希表中的索引位置。</p>
+<p>hashCode() 定义在 Object 中，即每个对象都包含 hashCode() 函数。但是 hashCode() 只有在散列表(HashMap，HashTable，HashSet)中才有用，在其他情况下没用。在散列表中hashCode() 的作用是获取对象的散列码，进而确定该对象在散列表中的位置。</p>
+<blockquote>
+<p>散列表存储的是键值对(key-value)，它的特点是：能根据“键”快速的检索出对应的“值”。这其中就利用到了散列码！<br>散列表的本质是通过数组实现的。当我们要获取散列表中的某个“值”时，实际上是要获取数组中的某个位置的元素。而数组的位置，就是通过“键”来获取的；更进一步说，数组的位置，是通过“键”对应的散列码计算得到的。</p>
+</blockquote>
+<p>所以，如果两个对象相等，它们的 hashCode() 值一定相等；如果他们的 hashCode() 相等，它们不一定相等。</p>
+<h3 id="hashCode-和-equals-的关系"><a href="#hashCode-和-equals-的关系" class="headerlink" title="hashCode() 和 equals() 的关系"></a>hashCode() 和 equals() 的关系</h3><p>存入数据时，先比较 hashCode() 的值是否相等，如果相等的话，再使用 equals() 进行比较，如果值也相等，则说明他们相等。如果 equals() 不相等，说明这是两个不同的对象。</p>
+<h3 id="为啥要重写"><a href="#为啥要重写" class="headerlink" title="为啥要重写"></a>为啥要重写</h3><p>因为两个相等的对象的 hashCode 值必须是相等。也就是说如果 equals 方法判断两个对象是相等的，那这两个对象的 hashCode 值也要相等。</p>
+<p>如果重写 equals() 时没有重写 hashCode() 方法的话就可能会导致 equals 方法判断是相等的两个对象，hashCode 值却不相等。</p>
+
         </div>
 
         
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：Java数据类型</li>
+        <li>本文标题：关于==与equals()的区别和hashCode()和equals()的重写的理解</li>
         <li>本文作者：Kang</li>
-        <li>创建时间：2021-02-19 16:00:07</li>
+        <li>创建时间：2022-01-09 21:02:38</li>
         <li>
-            本文链接：ykhou.github.io2021/02/19/Java数据类型/
+            本文链接：ykhou.github.io2022/01/09/关于-与equals-的区别和hashcode-和equals-的重写的理解/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -279,29 +287,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/02/19/%E7%AE%80%E5%8D%95%E5%89%96%E6%9E%90Java%E4%B8%AD%E7%9A%84%E8%A3%85%E7%AE%B1%E5%92%8C%E6%8B%86%E7%AE%B1/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">简单剖析Java中的装箱和拆箱</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/02/17/VsCode%E4%BB%A5%E7%AE%A1%E7%90%86%E5%91%98%E6%A8%A1%E5%BC%8F%E8%BF%90%E8%A1%8C%E7%BB%88%E7%AB%AF/"
+                           href="/2021/12/26/BinaryTree/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">VsCode以管理员模式运行终端</span>
+                                <span class="post-nav-title-item">BinaryTree</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -421,7 +414,7 @@
             <aside class="page-aside">
                 <div class="post-toc-wrap">
     <div class="post-toc">
-        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">Java数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">引用数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%92%8Cequals%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">&#x3D;&#x3D;和equals的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-%E6%AF%94%E8%BE%83"><span class="nav-text">使用&#x3D;&#x3D;比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8equals%E6%AF%94%E8%BE%83"><span class="nav-text">使用equals比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8Cequals%E7%9A%84%E5%8C%BA%E5%88%AB-1"><span class="nav-text">&#x3D;&#x3D;和equals的区别</span></a></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1%E3%80%81Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">1、Java数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">基本数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%95%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">引用数据类型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2%E3%80%81-%E5%92%8C-equals-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">2、&#x3D;&#x3D; 和 equals() 的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-%E6%AF%94%E8%BE%83"><span class="nav-text">使用 &#x3D;&#x3D; 比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-equals-%E6%AF%94%E8%BE%83"><span class="nav-text">使用 equals() 比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%92%8C-equals-%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%BE%E4%BE%8B"><span class="nav-text">&#x3D;&#x3D; 和 equals() 的区别举例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3%E3%80%81%E9%87%8D%E5%86%99-equals-%E6%97%B6%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B9%9F%E8%A6%81%E9%87%8D%E5%86%99-hashCode"><span class="nav-text">3、重写 equals() 时，为什么也要重写 hashCode()</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-text">hashCode() 的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hashCode-%E5%92%8C-equals-%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-text">hashCode() 和 equals() 的关系</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E5%95%A5%E8%A6%81%E9%87%8D%E5%86%99"><span class="nav-text">为啥要重写</span></a></li></ol></li></ol>
     </div>
 </div>
             </aside>
