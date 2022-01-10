@@ -204,12 +204,12 @@
     
     
         <span class="article-wordcount article-meta-item">
-            <i class="fas fa-file-word"></i>&nbsp;<span>1.4k 字</span>
+            <i class="fas fa-file-word"></i>&nbsp;<span>1.8k 字</span>
         </span>
     
     
         <span class="article-min2read article-meta-item">
-            <i class="fas fa-clock"></i>&nbsp;<span>5 分钟</span>
+            <i class="fas fa-clock"></i>&nbsp;<span>6 分钟</span>
         </span>
     
     
@@ -262,6 +262,7 @@
 <h3 id="hashCode-和-equals-的关系"><a href="#hashCode-和-equals-的关系" class="headerlink" title="hashCode() 和 equals() 的关系"></a>hashCode() 和 equals() 的关系</h3><p>存入数据时，先比较 hashCode() 的值是否相等，如果相等的话，再使用 equals() 进行比较，如果值也相等，则说明他们相等。如果 equals() 不相等，说明这是两个不同的对象。</p>
 <h3 id="为啥要重写"><a href="#为啥要重写" class="headerlink" title="为啥要重写"></a>为啥要重写</h3><p>因为两个相等的对象的 hashCode 值必须是相等。也就是说如果 equals 方法判断两个对象是相等的，那这两个对象的 hashCode 值也要相等。</p>
 <p>如果重写 equals() 时没有重写 hashCode() 方法的话就可能会导致 equals 方法判断是相等的两个对象，hashCode 值却不相等。</p>
+<p><strong>from 知乎</strong><br>在 hashmap 中是要保证 key 的唯一，如果新的 key 放入 map 中，发现和已有的 key 相同，那么就要覆盖。那么这个“唯一”是怎么确定的？或者说怎么认为两个 key 是相同的？那么这里的相同是指内容相同，比如 new String(“aaa”) ,new String(“aaa”), new 了两个字符串，是两个对象，但是内容是相同的，我们认为他们是相同的 key，再比如两个 User 对象，他们的 name 和 age 属性都相同，则认为他们是相同的。如果把 hashCode 去除，去除后，通过 equals 来比较两个 key 是否相同，也能达到我们的要求，只不过就要和 map 中的 key 一个一个的用 equals 比较，如果 map 中有很多元素了，那么效率可能会很低。其实 hashmap 中使用 hashCode 的一个目的是“分组”，同一个链表上的 key 的 hashcode 是一样的，如果不重写 hashcode，那么两个相同内容的对象，就会放在不同的链表上，那么就会存在两个相同的 key,不符合我们的初衷。所以就要重写 hashcode，保证有相同内容的对象有相同的 hashcode。而且 hashcode 的结果跟对象的属性有关。如果属性不参与 hashcode 的计算，那么这个 hash 算法就无意义。</p>
 
         </div>
 
