@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="如有问题或建议，请通过 houyongkang@bupt.edu.cn 联系">
+    <meta name="author" content="Kang">
+    
+    <title>
+        
+            布隆过滤器 |
+        
+        Kang`Blog
+    </title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"ykhou.gitee.io","root":"/","language":"zh-CN","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.png","favicon":"/images/logo.svg","article_img_align":"center","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Peace and Love"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.0"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="Kang`s blog" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+     
+        
+
+        <div class="page-main-content">
+
+            <div class="page-main-content-top">
+                <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            <a class="logo-title" href="/">
+                Kang`Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/lab/Clock"
+                            >
+                                LAB
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/lab/Clock">LAB</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+            </div>
+
+            <div class="page-main-content-middle">
+
+                <div class="main-content">
+
+                    
+                        <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">布隆过滤器</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.png">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Kang</span>
+                        
+                            <span class="author-label">Lv3</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2022-03-04 12:27:18
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%9C%AF%E4%B8%9A%E4%B8%93%E6%94%BB/">术业专攻</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>963 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>4 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><blockquote>
+<p>布隆过滤器：一种数据结构，由一个bit数组和hash Function组成，bit数组可以将其看成一个二进制数组。既然是二进制，那么里面存放的不是0，就是1，但是初始默认值都是0。</p>
+<p>相比于我们平时常用的的 List、Map、Set 等数据结构，它占用空间更少并且效率更高，但是缺点是其返回的结果是概率性的，而不是非常准确的。理论情况下添加到集合中的元素越多，误报的可能性就越大。并且，存放在布隆过滤器的数据不容易删除。</p>
+</blockquote>
+<p>优点</p>
+<ol>
+<li>由于存储的是二进制数据，所以占用的空间很小</li>
+<li>它的插入和查询速度是非常快的，时间复杂度是O（K），可以联想一下HashMap的过程</li>
+<li>保密性很好，因为本身不存储任何原始数据，只有二进制数据</li>
+</ol>
+<ol>
+<li>添加数据</li>
+</ol>
+<ul>
+<li>使用布隆过滤器的哈希函数对Key存储的元素值进行计算，得到哈希值(有几个哈希函数得到几个哈希值)和索引值(哈希值 &amp; n-1)；</li>
+<li>根据得到的索引值，在位数组中把对应下标的值置为 1。</li>
+</ul>
+<ol start="2">
+<li>判断是否存在于布隆过滤器</li>
+</ol>
+<ul>
+<li>对元素再次进行相同的哈希计算；</li>
+<li>判断对应数组位置是否为1，如果有一个位置为0，就说明这个值不在布隆过滤器中；如果全部为1，则说明这个值可能在布隆过滤器中</li>
+</ul>
+<ol start="3">
+<li>删除数据</li>
+</ol>
+<ul>
+<li>布隆过滤器无法删除数据，因为存在不同数据的哈希值相同的情况；</li>
+<li>可以使用计数布隆过滤器</li>
+</ul>
+<ol start="4">
+<li>为什么是可能存在？</li>
+</ol>
+<ul>
+<li>那些被置为 1 的位置也可能是由于其他元素的操作而改变的。比如，数据A 和 数据B，这两个数据同时将一个位置变为了 1。在这种情况下，我们就不能判定“数据B”一定存在，这是布隆过滤器存在误判的根本原因。</li>
+</ul>
+<ol start="5">
+<li>怎样降低误判率？</li>
+</ol>
+<ul>
+<li>增加bit数组长度，但如果太长会浪费资源</li>
+<li>增加哈希函数的个数，个数太多会花费过多计算时间</li>
+</ul>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><blockquote>
+<p>google 的 guava 和 Redission 都实现了布隆过滤器</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.google.guava<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>guava<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>28.2-android<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.redisson<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>redisson-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.10.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="源码学习"><a href="#源码学习" class="headerlink" title="源码学习"></a>源码学习</h2><ol>
+<li>默认false position proportion 判错率=0.03</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">BloomFilter&lt;T&gt; <span class="title">create</span><span class="params">(Funnel&lt;? <span class="keyword">super</span> T&gt; funnel, <span class="keyword">long</span> expectedInsertions)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> create(funnel, expectedInsertions, <span class="number">0.03D</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@VisibleForTesting</span></span><br><span class="line"><span class="keyword">static</span> &lt;T&gt; <span class="function">BloomFilter&lt;T&gt; <span class="title">create</span><span class="params">(Funnel&lt;? <span class="keyword">super</span> T&gt; funnel, <span class="keyword">long</span> expectedInsertions, <span class="keyword">double</span> fpp, BloomFilter.Strategy strategy)</span> </span>&#123;</span><br><span class="line">    Preconditions.checkNotNull(funnel);</span><br><span class="line">    Preconditions.checkArgument(expectedInsertions &gt;= <span class="number">0L</span>, <span class="string">&quot;Expected insertions (%s) must be &gt;= 0&quot;</span>, expectedInsertions);</span><br><span class="line">    Preconditions.checkArgument(fpp &gt; <span class="number">0.0D</span>, <span class="string">&quot;False positive probability (%s) must be &gt; 0.0&quot;</span>, fpp);</span><br><span class="line">    Preconditions.checkArgument(fpp &lt; <span class="number">1.0D</span>, <span class="string">&quot;False positive probability (%s) must be &lt; 1.0&quot;</span>, fpp);</span><br><span class="line">    Preconditions.checkNotNull(strategy);</span><br><span class="line">    <span class="keyword">if</span> (expectedInsertions == <span class="number">0L</span>) &#123;</span><br><span class="line">        expectedInsertions = <span class="number">1L</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">long</span> numBits = optimalNumOfBits(expectedInsertions, fpp);</span><br><span class="line">    <span class="keyword">int</span> numHashFunctions = optimalNumOfHashFunctions(expectedInsertions, numBits);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> BloomFilter(<span class="keyword">new</span> LockFreeBitArray(numBits), numHashFunctions, funnel, strategy);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IllegalArgumentException var10) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;Could not create BloomFilter of &quot;</span> + numBits + <span class="string">&quot; bits&quot;</span>, var10);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>计算bit数组大小</li>
+</ol>
+<p>100万个数据，0.03的误判率，大约需要1600万的的bit数组长度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@VisibleForTesting</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">long</span> <span class="title">optimalNumOfBits</span><span class="params">(<span class="keyword">long</span> n, <span class="keyword">double</span> p)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (p == <span class="number">0.0D</span>) &#123;</span><br><span class="line">       p = <span class="number">4.9E-324D</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> (<span class="keyword">long</span>)((<span class="keyword">double</span>)(-n) * Math.log(p) / (Math.log(<span class="number">2.0D</span>) * Math.log(<span class="number">2.0D</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>计算哈希函数个个数</li>
+</ol>
+<p>100万个数据，0.03的误判率，大约需要5个或6个哈希函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@VisibleForTesting</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">optimalNumOfHashFunctions</span><span class="params">(<span class="keyword">long</span> n, <span class="keyword">long</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> Math.max(<span class="number">1</span>, (<span class="keyword">int</span>)Math.round((<span class="keyword">double</span>)m / (<span class="keyword">double</span>)n * Math.log(<span class="number">2.0D</span>)));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：布隆过滤器</li>
+        <li>本文作者：Kang</li>
+        <li>创建时间：2022-03-04 12:27:18</li>
+        <li>
+            本文链接：ykhou.github.io2022/03/04/布隆过滤器/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/04/%E7%BC%93%E5%AD%98%E4%B8%8ERedis/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">缓存与Redis</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                    
+                </div>
+
+            </div>
+
+            <div class="page-main-content-bottom">
+                <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Kang</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+            </div>
+        </div>
+
+        
+            <div class="post-tools">
+                <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+            </div>
+        
+
+        <div class="right-bottom-side-tools">
+            <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+
+        
+            <aside class="page-aside">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AD%A6%E4%B9%A0"><span class="nav-text">源码学习</span></a></li></ol>
+    </div>
+</div>
+            </aside>
+        
+
+        <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+        
+    
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/dark-light-toggle.js"></script>
+
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.0/source/js/toc.js"></script>
+    
+</div>
+
+
+
+</body>
+</html>
